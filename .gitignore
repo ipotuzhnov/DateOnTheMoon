@@ -2,3 +2,7 @@
 DateOnTheMoon/GooglePlacesAPI/GooglePlacesApi.plist
 # ignore xcode generated files
 .DS_Store
+*.pbxuser
+*.xcworkspace
+xcuserdata
+profile

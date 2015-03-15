@@ -66,21 +66,12 @@ class GooglePlacesCache {
     }
 }
 
-/*
-var myDict: NSDictionary?
-if let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist") {
-    myDict = NSDictionary(contentsOfFile: path)
-}*/
-
 class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     let session = NSURLSession.sharedSession()
     
-    //let apiKey = "AIzaSyD0ou_vTD2ouNTDQm6mHTiVLF8sglb0AAk"
     let apiKey = ""
     let placesApiURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     let detailsApiURL = "https://maps.googleapis.com/maps/api/place/details/json"
-    
-    let testURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=(cities)&language=pt_BR&key=API_KEY"
     
     class var shared : GooglePlacesAPI {
         
@@ -104,7 +95,6 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     }
     
     func getPredictions(query: String, completionHandler: (places: [GooglePlace], error: String?) -> ()) {
-        //if let places = GooglePlacesCache.shared.cache[query] {
         if var places = GooglePlacesCache.shared.places[query] {
             places.append(GooglePlace(id: nil, locality: "from cache", state: nil, country: nil))
             return completionHandler(places: places, error: nil)
