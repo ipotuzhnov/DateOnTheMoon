@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09081A701AB4529C00A18B2B /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081A6F1AB4529C00A18B2B /* GooglePlacesAutocomplete.swift */; };
+		09081A7C1AB45D4700A18B2B /* DateOnTheMoonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */; };
+		092B2D8A1AB425CF001CD14A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B2D891AB425CF001CD14A /* Social.framework */; };
+		092B2D8C1AB44EB8001CD14A /* GooglePlacesApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 092B2D8B1AB44EB8001CD14A /* GooglePlacesApi.plist */; };
+		093832F01AAB9C1B00CDE4FF /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */; };
+		0943B79B1AB41FC500DACACF /* DetailMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943B79A1AB41FC500DACACF /* DetailMomentView.swift */; };
+		09A8B8E91A5AE4FE00AA833F /* MomentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8E71A5AE4FE00AA833F /* MomentsView.swift */; };
+		09A8B8EA1A5AE4FE00AA833F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8E81A5AE4FE00AA833F /* SettingsView.swift */; };
+		09A8B8EF1A5AE5CE00AA833F /* MomentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8ED1A5AE5CE00AA833F /* MomentsModel.swift */; };
+		09A8B8F01A5AE5CE00AA833F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8EE1A5AE5CE00AA833F /* SettingsModel.swift */; };
+		09AFD0741A98CBCE009A6699 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AFD0731A98CBCE009A6699 /* MapKit.framework */; };
+		09B3945F1AACDBFE00070049 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B3945E1AACDBFE00070049 /* map_pin.png */; };
+		09B394621AAE2C0400070049 /* moon5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B394601AAE2C0400070049 /* moon5.jpg */; };
+		09B394631AAE2C0400070049 /* moon6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B394611AAE2C0400070049 /* moon6.jpg */; };
+		09B394681AAE2EAE00070049 /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B394671AAE2EAE00070049 /* WalkthroughView.swift */; };
+		09B3946E1AAE2F3700070049 /* WalkthroughTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B3946D1AAE2F3700070049 /* WalkthroughTipView.swift */; };
+		09F9E6B21A5AC71700C9D888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9E6B11A5AC71700C9D888 /* AppDelegate.swift */; };
+		09F9E6B71A5AC71700C9D888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F9E6B51A5AC71700C9D888 /* Main.storyboard */; };
+		09F9E6B91A5AC71700C9D888 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F9E6B81A5AC71700C9D888 /* Images.xcassets */; };
+		09F9E6BC1A5AC71700C9D888 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F9E6BA1A5AC71700C9D888 /* LaunchScreen.xib */; };
+		09FD31AE1A9B412D0039ADC6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FD31AD1A9B412D0039ADC6 /* LocationView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		09081A7D1AB45D4700A18B2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F9E6A41A5AC71700C9D888 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09F9E6AB1A5AC71700C9D888;
+			remoteInfo = DateOnTheMoon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		09081A6F1AB4529C00A18B2B /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePlacesAutocomplete.swift; path = GooglePlacesAPI/GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
+		09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateOnTheMoonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		09081A7A1AB45D4700A18B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnTheMoonTests.swift; sourceTree = "<group>"; };
+		092B2D891AB425CF001CD14A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		092B2D8B1AB44EB8001CD14A /* GooglePlacesApi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = GooglePlacesApi.plist; path = GooglePlacesAPI/GooglePlacesApi.plist; sourceTree = "<group>"; };
+		093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
+		0943B79A1AB41FC500DACACF /* DetailMomentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMomentView.swift; sourceTree = "<group>"; };
+		09A8B8E71A5AE4FE00AA833F /* MomentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsView.swift; sourceTree = "<group>"; };
+		09A8B8E81A5AE4FE00AA833F /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		09A8B8ED1A5AE5CE00AA833F /* MomentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsModel.swift; sourceTree = "<group>"; };
+		09A8B8EE1A5AE5CE00AA833F /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		09AFD0731A98CBCE009A6699 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		09B3945E1AACDBFE00070049 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_pin.png; path = Images/map_pin.png; sourceTree = "<group>"; };
+		09B394601AAE2C0400070049 /* moon5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = moon5.jpg; path = Images/moon5.jpg; sourceTree = "<group>"; };
+		09B394611AAE2C0400070049 /* moon6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = moon6.jpg; path = Images/moon6.jpg; sourceTree = "<group>"; };
+		09B394671AAE2EAE00070049 /* WalkthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkthroughView.swift; path = Walkthrough/WalkthroughView.swift; sourceTree = "<group>"; };
+		09B3946D1AAE2F3700070049 /* WalkthroughTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughTipView.swift; sourceTree = "<group>"; };
+		09F9E6AC1A5AC71700C9D888 /* DateOnTheMoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = DateOnTheMoon.app; path = "/Users/ilya/Documents/projects/DateOnTheMoon/build/Debug-iphoneos/DateOnTheMoon.app"; sourceTree = "<absolute>"; };
+		09F9E6B01A5AC71700C9D888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09F9E6B11A5AC71700C9D888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		09F9E6B61A5AC71700C9D888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		09F9E6B81A5AC71700C9D888 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		09F9E6BB1A5AC71700C9D888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		09FD31AD1A9B412D0039ADC6 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		09081A741AB45D4700A18B2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09F9E6A91A5AC71700C9D888 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				092B2D8A1AB425CF001CD14A /* Social.framework in Frameworks */,
+				09AFD0741A98CBCE009A6699 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09081A781AB45D4700A18B2B /* DateOnTheMoonTests */ = {
+			isa = PBXGroup;
+			children = (
+				09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */,
+				09081A791AB45D4700A18B2B /* Supporting Files */,
+			);
+			path = DateOnTheMoonTests;
+			sourceTree = "<group>";
+		};
+		09081A791AB45D4700A18B2B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				09081A7A1AB45D4700A18B2B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		09A8B8E61A5AE4FE00AA833F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09B394661AAE2E3800070049 /* Walkthrough */,
+				09FD31AD1A9B412D0039ADC6 /* LocationView.swift */,
+				09A8B8E71A5AE4FE00AA833F /* MomentsView.swift */,
+				09A8B8E81A5AE4FE00AA833F /* SettingsView.swift */,
+				093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */,
+				0943B79A1AB41FC500DACACF /* DetailMomentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		09A8B8EC1A5AE5CE00AA833F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09A8B8ED1A5AE5CE00AA833F /* MomentsModel.swift */,
+				09A8B8EE1A5AE5CE00AA833F /* SettingsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		09B3945A1AACDADC00070049 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				09B394601AAE2C0400070049 /* moon5.jpg */,
+				09B394611AAE2C0400070049 /* moon6.jpg */,
+				09B3945E1AACDBFE00070049 /* map_pin.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		09B394661AAE2E3800070049 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				09B394671AAE2EAE00070049 /* WalkthroughView.swift */,
+				09B3946D1AAE2F3700070049 /* WalkthroughTipView.swift */,
+			);
+			name = Walkthrough;
+			sourceTree = "<group>";
+		};
+		09D5B50C1A6C18730052E062 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		09F9E6A31A5AC71700C9D888 = {
+			isa = PBXGroup;
+			children = (
+				092B2D891AB425CF001CD14A /* Social.framework */,
+				09AFD0731A98CBCE009A6699 /* MapKit.framework */,
+				09F9E6AE1A5AC71700C9D888 /* DateOnTheMoon */,
+				09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */,
+				09081A781AB45D4700A18B2B /* DateOnTheMoonTests */,
+			);
+			sourceTree = "<group>";
+		};
+		09F9E6AE1A5AC71700C9D888 /* DateOnTheMoon */ = {
+			isa = PBXGroup;
+			children = (
+				09B3945A1AACDADC00070049 /* Images */,
+				09FE4BE61AA251C700E5DB7F /* GooglePlacesAPI */,
+				09D5B50C1A6C18730052E062 /* Extensions */,
+				09A8B8EC1A5AE5CE00AA833F /* Models */,
+				09A8B8E61A5AE4FE00AA833F /* Views */,
+				09F9E6B11A5AC71700C9D888 /* AppDelegate.swift */,
+				09F9E6B51A5AC71700C9D888 /* Main.storyboard */,
+				09F9E6B81A5AC71700C9D888 /* Images.xcassets */,
+				09F9E6BA1A5AC71700C9D888 /* LaunchScreen.xib */,
+				09F9E6AF1A5AC71700C9D888 /* Supporting Files */,
+			);
+			path = DateOnTheMoon;
+			sourceTree = "<group>";
+		};
+		09F9E6AF1A5AC71700C9D888 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				09F9E6B01A5AC71700C9D888 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		09FE4BE61AA251C700E5DB7F /* GooglePlacesAPI */ = {
+			isa = PBXGroup;
+			children = (
+				09081A6F1AB4529C00A18B2B /* GooglePlacesAutocomplete.swift */,
+				092B2D8B1AB44EB8001CD14A /* GooglePlacesApi.plist */,
+			);
+			name = GooglePlacesAPI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		09081A761AB45D4700A18B2B /* DateOnTheMoonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09081A7F1AB45D4700A18B2B /* Build configuration list for PBXNativeTarget "DateOnTheMoonTests" */;
+			buildPhases = (
+				09081A731AB45D4700A18B2B /* Sources */,
+				09081A741AB45D4700A18B2B /* Frameworks */,
+				09081A751AB45D4700A18B2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09081A7E1AB45D4700A18B2B /* PBXTargetDependency */,
+			);
+			name = DateOnTheMoonTests;
+			productName = DateOnTheMoonTests;
+			productReference = 09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		09F9E6AB1A5AC71700C9D888 /* DateOnTheMoon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09F9E6CB1A5AC71700C9D888 /* Build configuration list for PBXNativeTarget "DateOnTheMoon" */;
+			buildPhases = (
+				09F9E6A81A5AC71700C9D888 /* Sources */,
+				09F9E6A91A5AC71700C9D888 /* Frameworks */,
+				09F9E6AA1A5AC71700C9D888 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DateOnTheMoon;
+			productName = "Date on the Moon";
+			productReference = 09F9E6AC1A5AC71700C9D888 /* DateOnTheMoon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		09F9E6A41A5AC71700C9D888 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Ilya Potuzhnov";
+				TargetAttributes = {
+					09081A761AB45D4700A18B2B = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 09F9E6AB1A5AC71700C9D888;
+					};
+					09F9E6AB1A5AC71700C9D888 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 6BPLWRUZ5D;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 09F9E6A71A5AC71700C9D888 /* Build configuration list for PBXProject "DateOnTheMoon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 09F9E6A31A5AC71700C9D888;
+			productRefGroup = 09F9E6A31A5AC71700C9D888;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				09F9E6AB1A5AC71700C9D888 /* DateOnTheMoon */,
+				09081A761AB45D4700A18B2B /* DateOnTheMoonTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		09081A751AB45D4700A18B2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09F9E6AA1A5AC71700C9D888 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09F9E6B71A5AC71700C9D888 /* Main.storyboard in Resources */,
+				09F9E6BC1A5AC71700C9D888 /* LaunchScreen.xib in Resources */,
+				09B394621AAE2C0400070049 /* moon5.jpg in Resources */,
+				09B3945F1AACDBFE00070049 /* map_pin.png in Resources */,
+				09F9E6B91A5AC71700C9D888 /* Images.xcassets in Resources */,
+				092B2D8C1AB44EB8001CD14A /* GooglePlacesApi.plist in Resources */,
+				09B394631AAE2C0400070049 /* moon6.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		09081A731AB45D4700A18B2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09081A7C1AB45D4700A18B2B /* DateOnTheMoonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09F9E6A81A5AC71700C9D888 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09FD31AE1A9B412D0039ADC6 /* LocationView.swift in Sources */,
+				09A8B8EA1A5AE4FE00AA833F /* SettingsView.swift in Sources */,
+				0943B79B1AB41FC500DACACF /* DetailMomentView.swift in Sources */,
+				093832F01AAB9C1B00CDE4FF /* PassThroughView.swift in Sources */,
+				09A8B8F01A5AE5CE00AA833F /* SettingsModel.swift in Sources */,
+				09B394681AAE2EAE00070049 /* WalkthroughView.swift in Sources */,
+				09081A701AB4529C00A18B2B /* GooglePlacesAutocomplete.swift in Sources */,
+				09A8B8EF1A5AE5CE00AA833F /* MomentsModel.swift in Sources */,
+				09A8B8E91A5AE4FE00AA833F /* MomentsView.swift in Sources */,
+				09F9E6B21A5AC71700C9D888 /* AppDelegate.swift in Sources */,
+				09B3946E1AAE2F3700070049 /* WalkthroughTipView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		09081A7E1AB45D4700A18B2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09F9E6AB1A5AC71700C9D888 /* DateOnTheMoon */;
+			targetProxy = 09081A7D1AB45D4700A18B2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		09F9E6B51A5AC71700C9D888 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				09F9E6B61A5AC71700C9D888 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		09F9E6BA1A5AC71700C9D888 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				09F9E6BB1A5AC71700C9D888 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		09081A801AB45D4700A18B2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DateOnTheMoonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateOnTheMoon.app/DateOnTheMoon";
+			};
+			name = Debug;
+		};
+		09081A811AB45D4700A18B2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DateOnTheMoonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateOnTheMoon.app/DateOnTheMoon";
+			};
+			name = Release;
+		};
+		09F9E6C91A5AC71700C9D888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		09F9E6CA1A5AC71700C9D888 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		09F9E6CC1A5AC71700C9D888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/DateOnTheMoon/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = DateOnTheMoon;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		09F9E6CD1A5AC71700C9D888 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/DateOnTheMoon/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = DateOnTheMoon;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09081A7F1AB45D4700A18B2B /* Build configuration list for PBXNativeTarget "DateOnTheMoonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09081A801AB45D4700A18B2B /* Debug */,
+				09081A811AB45D4700A18B2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		09F9E6A71A5AC71700C9D888 /* Build configuration list for PBXProject "DateOnTheMoon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09F9E6C91A5AC71700C9D888 /* Debug */,
+				09F9E6CA1A5AC71700C9D888 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09F9E6CB1A5AC71700C9D888 /* Build configuration list for PBXNativeTarget "DateOnTheMoon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09F9E6CC1A5AC71700C9D888 /* Debug */,
+				09F9E6CD1A5AC71700C9D888 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 09F9E6A41A5AC71700C9D888 /* Project object */;
+}

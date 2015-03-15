@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MGd-Xm-y4W">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Best Moments-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="MomentsView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7Ck-XW-KSJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="qZF-8V-f9i"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="BGi-Ce-7ZQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Ck-XW-KSJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="OCz-Yv-Vm3"/>
+                            <constraint firstAttribute="trailing" secondItem="7Ck-XW-KSJ" secondAttribute="trailing" id="jcu-rP-oSL"/>
+                            <constraint firstItem="7Ck-XW-KSJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="lhU-HB-aqi"/>
+                            <constraint firstItem="7Ck-XW-KSJ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="wJQ-DB-01E"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Best Moments" id="EUz-Uv-Gsj">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="4Lh-JM-15i">
+                            <connections>
+                                <segue destination="kue-Yh-v8j" kind="show" identifier="goToTheSettings" id="v15-VK-XnF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="7Ck-XW-KSJ" id="TXO-0u-mAu"/>
+                        <segue destination="qNQ-uI-eKy" kind="show" identifier="showMomentDetails" id="9xf-76-NMP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="350"/>
+        </scene>
+        <!--Location Settings-->
+        <scene sceneID="Ls2-iQ-i1T">
+            <objects>
+                <viewController id="kue-Yh-v8j" customClass="SettingsView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="25d-P7-m0y"/>
+                        <viewControllerLayoutGuide type="bottom" id="fgA-mi-S3J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tde-xK-2CG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldD-d0-DzJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kue-Yh-v8j" id="RiV-lB-8YE"/>
+                                    <outlet property="delegate" destination="kue-Yh-v8j" id="HxQ-vK-zPF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="ldD-d0-DzJ" firstAttribute="top" secondItem="tde-xK-2CG" secondAttribute="top" id="1AE-3B-dhk"/>
+                            <constraint firstAttribute="trailing" secondItem="ldD-d0-DzJ" secondAttribute="trailing" id="HFU-Mu-AyV"/>
+                            <constraint firstItem="ldD-d0-DzJ" firstAttribute="leading" secondItem="tde-xK-2CG" secondAttribute="leading" id="ILf-hV-Jur"/>
+                            <constraint firstItem="ldD-d0-DzJ" firstAttribute="bottom" secondItem="fgA-mi-S3J" secondAttribute="top" id="NA8-Uz-rJo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Location Settings" id="n8o-JG-ftd"/>
+                    <connections>
+                        <outlet property="tableView" destination="ldD-d0-DzJ" id="9Px-Jn-val"/>
+                        <segue destination="a7y-TY-gne" kind="show" identifier="chooseUserLocation" id="O7i-A2-jah"/>
+                        <segue destination="a7y-TY-gne" kind="show" identifier="choosePartnerLocation" id="LWz-Pz-kL9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4VQ-8e-qow" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="1173"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R9G-T8-9zv">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="MGd-Xm-y4W" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="seE-Df-bKN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="YYS-wZ-3kl"/>
+                        <segue destination="kue-Yh-v8j" kind="show" identifier="goToTheSettings" id="jMh-gb-62e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3b-8E-cXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241" y="1011"/>
+        </scene>
+        <!--Moment Details-->
+        <scene sceneID="766-Mr-SmG">
+            <objects>
+                <viewController id="qNQ-uI-eKy" customClass="DetailMomentView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tAX-3j-RcD"/>
+                        <viewControllerLayoutGuide type="bottom" id="kQk-8G-1pP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lVT-sX-HaP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Moment Details" id="6BB-mG-Cmb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rgs-FB-Nw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="350"/>
+        </scene>
+        <!--Choose Location-->
+        <scene sceneID="cQS-yP-yYa">
+            <objects>
+                <viewController title="Choose Location" id="a7y-TY-gne" customClass="LocationView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JNM-n9-Qkj"/>
+                        <viewControllerLayoutGuide type="bottom" id="rR0-jy-T7w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aAR-n5-gI1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AI8-Pt-1mv" customClass="PassThroughView" customModule="DateOnTheMoon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AI8-Pt-1mv" firstAttribute="bottom" secondItem="rR0-jy-T7w" secondAttribute="top" id="6kM-FK-hf9"/>
+                            <constraint firstAttribute="trailing" secondItem="AI8-Pt-1mv" secondAttribute="trailing" id="VFD-gD-TrX"/>
+                            <constraint firstItem="AI8-Pt-1mv" firstAttribute="leading" secondItem="aAR-n5-gI1" secondAttribute="leading" id="k6U-Ja-w3d"/>
+                            <constraint firstItem="AI8-Pt-1mv" firstAttribute="top" secondItem="JNM-n9-Qkj" secondAttribute="bottom" id="ujN-YS-HK4"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Choose Location" id="RrH-mj-jYe">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="kte-b9-8E0">
+                            <connections>
+                                <action selector="saveLocation" destination="a7y-TY-gne" id="Iyu-DP-YUr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchView" destination="AI8-Pt-1mv" id="MBL-Nl-deA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEi-9r-xWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="1173"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="v15-VK-XnF"/>
+        <segue reference="O7i-A2-jah"/>
+    </inferredMetricsTieBreakers>
+</document>

@@ -1,0 +1,4 @@
+# ignore google api key
+DateOnTheMoon/GooglePlacesAPI/GooglePlacesApi.plist
+# ignore xcode generated files
+.DS_Store
