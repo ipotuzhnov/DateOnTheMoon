@@ -18,17 +18,39 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-    addRefreshControll()
-    
     let screenRect = UIScreen.mainScreen().bounds
     let screenWidth = screenRect.size.width
     tableView.rowHeight = screenWidth / 4.0
-    tableView.reloadData()
+    
+    addRefreshControll()
+    
+    updateMoments()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  /* Presents simple alert.
+  * @param {String} title The title for alert.
+  * @param {String} message The message for alert.
+  */
+  func showAlert(title: String, message: String) {
+    var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    
+    alert.addAction(UIAlertAction(title: "Ok", style: .Default) {
+      (action: UIAlertAction!) in
+      println("Handle Ok logic here")
+      })
+    
+    /*
+    alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+    println("Handle Cancel Logic here")
+    }))
+    */
+    
+    presentViewController(alert, animated: true, completion: nil)
   }
   
   func addRefreshControll() {
@@ -37,8 +59,22 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     tableView.addSubview(refreshControl)
   }
   
+  func updateMoments() {
+    momentsModel.getMoments {
+      (error) in
+      dispatch_async(dispatch_get_main_queue()) {
+        if error != nil { return self.showAlert("Failed to load moments!", message: error!) }
+        
+        self.tableView.reloadData()
+      }
+    }
+  }
+  
   func refreshTableView(sender: AnyObject) {
     // Do refreshing
+    updateMoments()
+    
+    return
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
       let delay = 0.5
       NSThread.sleepForTimeInterval(delay)

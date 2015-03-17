@@ -214,6 +214,9 @@ class Moment {
 }
 
 class MomentsModel {
+  //https://date-on-the-moon.herokuapp.com/moon?a=san%20francisco,ca&b=59.9174455%2C30.3250575
+  let momentsApiURL = "https://date-on-the-moon.herokuapp.com/moon"
+  
   var moments = [Moment]()
   var maxAngle = 0.0
   var maxDuration = 0.0
@@ -280,6 +283,63 @@ class MomentsModel {
   
   func getMomentAngle(index: Int) -> Double {
     return moments[index].angle
+  }
+  
+  func getMoments(completionHandler: (error: String?) -> ()) {
+    if settings.userCoordinate == nil || settings.partnerCoordinate == nil {
+      return completionHandler(error: "Coordinate is not valid.")
+    }
+    
+    let userCoordinateString = "\(settings.userCoordinate!.latitude)%2C\(settings.userCoordinate!.longitude)"
+    let partnerCoordinateString = "\(settings.partnerCoordinate!.latitude)%2C\(settings.partnerCoordinate!.longitude)"
+    let urlPath = momentsApiURL +
+      "?a=" + "\(settings.userCoordinate!.latitude),\(settings.userCoordinate!.longitude)" +
+      "&b=" + "\(settings.partnerCoordinate!.latitude),\(settings.partnerCoordinate!.longitude)"
+    
+    let url = NSURL(string: urlPath.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+    
+    if url == nil { return completionHandler(error: "url == nil") }
+    
+    let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
+      (data, response, error) in
+      let (moments, error) = self.parseMomentsJSON(data)
+      for moment in moments {
+        momentsModel.addMoment(moment)
+      }
+      completionHandler(error: error)
+    }
+    
+    task.resume()
+  }
+  
+  func parseMomentsJSON(data: NSData) -> ([Moment], String?) {
+    var moments = [Moment]()
+    var err: NSError?
+    // throwing an error on the line below (can't figure out where the error message is)
+    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSArray
+    
+    if err != nil { return (moments, "Error: \(err)") }
+    
+    //let status = jsonResult["status"] as? String
+    //let error = jsonResult["error_message"] as? String
+    
+    //if error != nil { return (moments, "Status: \(status). Error: \(error)") }
+    
+    for result in jsonResult as [NSDictionary] {
+      let start = result["start"] as? Double
+      let end = result["finish"] as? Double
+      let phase = result["phase"] as? Double
+      let angle = result["angle"] as? Double
+      
+      if start == nil { return (moments, "Error: json parse: start") }
+      if end == nil { return (moments, "Error: json parse: end") }
+      if phase == nil { return (moments, "Error: json parse: phase") }
+      if angle == nil { return (moments, "Error: json parse: angle") }
+      
+      moments.append(Moment(start: NSDate(timeIntervalSince1970: start!), end: NSDate(timeIntervalSince1970: end!), angle: angle! * 100, phase: phase!))
+    }
+    
+    return (moments, nil)
   }
   
   func setTestMoments() {

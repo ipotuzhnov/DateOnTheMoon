@@ -59,6 +59,8 @@ class DetailMomentView: UIViewController {
     weatherLabel.text = "Weather: \(moment!.weather)"
     view.addSubview(weatherLabel)
     
+    return
+    
     // Vertical margins
     
     let vviewtFrame = CGRect(x: 0, y: topBarOffset, width: viewBounds.width, height: margin)
