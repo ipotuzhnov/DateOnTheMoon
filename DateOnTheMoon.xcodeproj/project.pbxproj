@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09081A701AB4529C00A18B2B /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081A6F1AB4529C00A18B2B /* GooglePlacesAutocomplete.swift */; };
 		09081A7C1AB45D4700A18B2B /* DateOnTheMoonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */; };
+		09196C331AB769DD00B5214D /* FullMoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09196C321AB769DD00B5214D /* FullMoon.png */; };
 		092B2D8A1AB425CF001CD14A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B2D891AB425CF001CD14A /* Social.framework */; };
 		092B2D8C1AB44EB8001CD14A /* GooglePlacesApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 092B2D8B1AB44EB8001CD14A /* GooglePlacesApi.plist */; };
 		093832F01AAB9C1B00CDE4FF /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */; };
@@ -45,6 +46,8 @@
 		09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateOnTheMoonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09081A7A1AB45D4700A18B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnTheMoonTests.swift; sourceTree = "<group>"; };
+		09196C311AB61A2E00B5214D /* DateOnTheMoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateOnTheMoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09196C321AB769DD00B5214D /* FullMoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FullMoon.png; path = Images/FullMoon.png; sourceTree = "<group>"; };
 		092B2D891AB425CF001CD14A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		092B2D8B1AB44EB8001CD14A /* GooglePlacesApi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = GooglePlacesApi.plist; path = GooglePlacesAPI/GooglePlacesApi.plist; sourceTree = "<group>"; };
 		093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		09B394611AAE2C0400070049 /* moon6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = moon6.jpg; path = Images/moon6.jpg; sourceTree = "<group>"; };
 		09B394671AAE2EAE00070049 /* WalkthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkthroughView.swift; path = Walkthrough/WalkthroughView.swift; sourceTree = "<group>"; };
 		09B3946D1AAE2F3700070049 /* WalkthroughTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughTipView.swift; sourceTree = "<group>"; };
-		09F9E6AC1A5AC71700C9D888 /* DateOnTheMoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = DateOnTheMoon.app; path = "/Users/ilya/Documents/projects/DateOnTheMoon/build/Debug-iphoneos/DateOnTheMoon.app"; sourceTree = "<absolute>"; };
 		09F9E6B01A5AC71700C9D888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09F9E6B11A5AC71700C9D888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09F9E6B61A5AC71700C9D888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		09B3945A1AACDADC00070049 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				09196C321AB769DD00B5214D /* FullMoon.png */,
 				09B394601AAE2C0400070049 /* moon5.jpg */,
 				09B394611AAE2C0400070049 /* moon6.jpg */,
 				09B3945E1AACDBFE00070049 /* map_pin.png */,
@@ -161,6 +164,7 @@
 				09F9E6AE1A5AC71700C9D888 /* DateOnTheMoon */,
 				09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */,
 				09081A781AB45D4700A18B2B /* DateOnTheMoonTests */,
+				09196C311AB61A2E00B5214D /* DateOnTheMoon.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,7 +237,7 @@
 			);
 			name = DateOnTheMoon;
 			productName = "Date on the Moon";
-			productReference = 09F9E6AC1A5AC71700C9D888 /* DateOnTheMoon.app */;
+			productReference = 09196C311AB61A2E00B5214D /* DateOnTheMoon.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -294,6 +298,7 @@
 				09F9E6B71A5AC71700C9D888 /* Main.storyboard in Resources */,
 				09F9E6BC1A5AC71700C9D888 /* LaunchScreen.xib in Resources */,
 				09B394621AAE2C0400070049 /* moon5.jpg in Resources */,
+				09196C331AB769DD00B5214D /* FullMoon.png in Resources */,
 				09B3945F1AACDBFE00070049 /* map_pin.png in Resources */,
 				09F9E6B91A5AC71700C9D888 /* Images.xcassets in Resources */,
 				092B2D8C1AB44EB8001CD14A /* GooglePlacesApi.plist in Resources */,
@@ -508,6 +513,7 @@
 				09081A811AB45D4700A18B2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09F9E6A71A5AC71700C9D888 /* Build configuration list for PBXProject "DateOnTheMoon" */ = {
 			isa = XCConfigurationList;

@@ -26,10 +26,11 @@ class DetailMomentView: UIViewController {
     let margin: CGFloat = 10
     
     // Add moon image
+    
     let diameter: CGFloat = 80
     let moonFrame = CGRect(x: 0, y: topBarOffset, width: diameter, height: diameter)
     let moonMargin: CGFloat = 0
-    let moonImage = moment!.drawMoonIn(moonFrame, margin: moonMargin)
+    let moonImage = moment!.drawMoonIn(moonFrame, margin: moonMargin, color: .whiteColor())
     let moonViewFrame = CGRect(x: 10, y: topBarOffset + 10, width: diameter, height: diameter)
     let moonView = UIImageView(frame: moonViewFrame)
     moonView.image = moonImage
@@ -37,6 +38,7 @@ class DetailMomentView: UIViewController {
     view.addSubview(moonView)
     
     // Add moon phase label
+    
     let phaseLabelX: CGFloat = margin + diameter + margin
     let phaseLabelY: CGFloat = topBarOffset + margin
     let phaseLabelW: CGFloat = viewBounds.width - phaseLabelX - margin
@@ -47,6 +49,7 @@ class DetailMomentView: UIViewController {
     view.addSubview(phaseLabel)
     
     // Add weather conditions label
+    
     let weatherLabelX: CGFloat = margin + diameter + margin
     let weatherLabelY: CGFloat = topBarOffset + margin + phaseLabelH + margin
     let weatherLabelW: CGFloat = viewBounds.width - weatherLabelX - margin
@@ -57,6 +60,7 @@ class DetailMomentView: UIViewController {
     view.addSubview(weatherLabel)
     
     // Vertical margins
+    
     let vviewtFrame = CGRect(x: 0, y: topBarOffset, width: viewBounds.width, height: margin)
     let vviewt = UIView(frame: vviewtFrame)
     vviewt.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
@@ -68,6 +72,7 @@ class DetailMomentView: UIViewController {
     view.addSubview(vviewb)
     
     // Horizontal margins
+    
     let hviewlFrame = CGRect(x: 0, y: topBarOffset, width: margin, height: viewBounds.height)
     let hviewl = UIView(frame: hviewlFrame)
     hviewl.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.5)

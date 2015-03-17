@@ -84,6 +84,7 @@ class Moment {
     
     let context = UIGraphicsGetCurrentContext()
     
+    
     arc.stroke()
     
     // get an image of the graphics context
@@ -94,7 +95,7 @@ class Moment {
     return image
   }
   
-  func drawMoonIn(frame: CGRect, margin: CGFloat) -> UIImage {
+  func drawMoonIn(frame: CGRect, margin: CGFloat, color: UIColor) -> UIImage {
     if phase > 1 {
       println("0 <= phase < 1")
       return UIImage()
@@ -115,7 +116,13 @@ class Moment {
     }
     
     // create a view to draw the path in
-    let view = UIView(frame: frame)
+    let view = UIImageView(frame: frame)
+    
+    let moonFrame = CGRect(x: margin, y: margin, width: radius * 2, height: radius * 2)
+    let moonView = UIImageView(frame: moonFrame)
+    moonView.image = UIImage(named: "FullMoon.png")
+    
+    view.addSubview(moonView)
     
     UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.mainScreen().scale)
     
@@ -123,32 +130,36 @@ class Moment {
     
     let context = UIGraphicsGetCurrentContext()
     
-    // Right side
-    if phase < 1/2 { // Waxing
-      drawMoonPartInContext(context, withColor: .grayColor(), rightSide: true, center: center, radius: radius, vertTransform: 1)
+    let moonPath = UIBezierPath()
+    
+    if phase < 1/2 {
+      moonPath.appendPath(pathForPart(false, clockwise: true, center: center, radius: radius, vertTransform: 1))
       
       if phase < 1/4 {
         let mx = CGFloat(1 - phase * 4)
-        drawMoonPartInContext(context, withColor: .whiteColor(), rightSide: true, center: center, radius: radius, vertTransform: mx)
+        moonPath.appendPath(pathForPart(true, clockwise: true, center: center, radius: radius, vertTransform: mx))
+      } else if phase > 1/4 {
+        let mx = CGFloat((phase - 1/4) * 4)
+        moonPath.appendPath(pathForPart(false, clockwise: false, center: center, radius: radius, vertTransform: mx))
+      } else {
+        moonPath.closePath()
       }
-    } else if phase < 3/4 { // Waning
-      let mx = CGFloat(1 - (phase - 1/2) * 4)
-      drawMoonPartInContext(context, withColor: .grayColor(), rightSide: true, center: center, radius: radius, vertTransform: mx)
     }
     
-    // Left side
-    if phase > 1/2 { // Waning
-      drawMoonPartInContext(context, withColor: .grayColor(), rightSide: false, center: center, radius: radius, vertTransform: 1)
+    if phase > 1/2 {
+      moonPath.appendPath(pathForPart(true, clockwise: true, center: center, radius: radius, vertTransform: 1))
       
-      if phase > 3/4 {
-        let mx = CGFloat((phase - 3/4) * 4)
-        drawMoonPartInContext(context, withColor: .whiteColor(), rightSide: false, center: center, radius: radius, vertTransform: mx)
+      if phase < 3/4 {
+        let mx = CGFloat(1 - (phase - 1/2) * 4)
+        moonPath.appendPath(pathForPart(true, clockwise: false, center: center, radius: radius, vertTransform: mx))
+      } else if phase > 3/4 {
+        let mx = CGFloat(1 - (phase - 1/2) * 4)
+        moonPath.appendPath(pathForPart(true, clockwise: false, center: center, radius: radius, vertTransform: mx))
       }
-      
-    } else if phase > 1/4 { // Waxing
-      let mx = CGFloat((phase - 1/4) * 4)
-      drawMoonPartInContext(context, withColor: .grayColor(), rightSide: false, center: center, radius: radius, vertTransform: mx)
     }
+    
+    CGContextSetFillColorWithColor(context, color.CGColor)
+    moonPath.fill()
     
     // get an image of the graphics context
     let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -156,6 +167,29 @@ class Moment {
     UIGraphicsEndImageContext()
     
     return image
+  }
+  
+  func pathForPart(rightSide: Bool, clockwise: Bool, center centerIn: CGPoint, radius: CGFloat, vertTransform mx: CGFloat) -> UIBezierPath {
+    let center = CGPoint(x: centerIn.x / mx, y: centerIn.y)
+    var at = CGAffineTransformMakeScale (mx, 1)
+    let path = UIBezierPath()
+    var startAngle: CGFloat
+    var endAngle: CGFloat
+    if rightSide {
+      startAngle = -CGFloat(M_PI/2)
+      endAngle = CGFloat(M_PI/2)
+    } else {
+      startAngle = CGFloat(M_PI/2)
+      endAngle = -CGFloat(M_PI/2)
+    }
+    if !clockwise {
+      startAngle = -startAngle
+      endAngle = -endAngle
+    }
+    path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+    path.applyTransform(at)
+    
+    return path
   }
   
   func drawMoonPartInContext(context: CGContext, withColor color: UIColor, rightSide: Bool, center centerIn: CGPoint, radius: CGFloat, vertTransform mx: CGFloat) {

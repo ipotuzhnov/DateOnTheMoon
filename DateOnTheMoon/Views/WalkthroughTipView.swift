@@ -44,7 +44,7 @@ class WalkthroughTipView: UIViewController {
       let height: CGFloat = view.frame.height - (titleViewHeight + 60)
       let width: CGFloat = height / 2
       let y: CGFloat = titleViewHeight + 20
-      let x = (view.frame.width - width) / 2
+      let x: CGFloat = (view.frame.width - width) / 2
       let imageViewFrame = CGRect(x: x, y: y, width: width, height: height)
       let imageView = UIImageView(frame: imageViewFrame)
       imageView.image = UIImage(named: name)

@@ -104,7 +104,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     // Add moon image
     let moonFrame = CGRect(x: 2, y: 0, width: 18, height: 16)
     let moonMargin: CGFloat = 2
-    let moonImage = moment.drawMoonIn(moonFrame, margin: moonMargin)
+    let moonImage = moment.drawMoonIn(moonFrame, margin: moonMargin, color: .whiteColor())
     let moonView = UIImageView(frame: CGRect(x: 2, y: 0, width: 18, height: 16))
     moonView.image = moonImage
     moonView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/10), 0, 0, 1)
