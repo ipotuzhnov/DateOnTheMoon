@@ -21,6 +21,28 @@ class LocationView:
   @IBAction func saveLocation() {
     coordinate = mapView?.centerCoordinate
     
+    GooglePlacesAPI.shared.getTimezone(coordinate?.latitude, longitude: coordinate?.longitude) {
+      (timezone, error) in
+      if error != nil {
+        dispatch_async(dispatch_get_main_queue()) {
+          self.showAlert("GPA.getTimezone.ERROR", message: error!)
+          return
+        }
+      }
+      
+      if let description = timezone?.description {
+        dispatch_async(dispatch_get_main_queue()) {
+          self.showAlert("Timezone", message: description)
+          return
+        }
+      } else {
+        dispatch_async(dispatch_get_main_queue()) {
+          self.showAlert("Timezone", message: "Can't get descriprion")
+          return
+        }
+      }
+    }
+    
     if locationIdentifier == "chooseUserLocation" {
       settings.userCoordinate = coordinate
     }
@@ -30,7 +52,7 @@ class LocationView:
     }
     
     settings.saveSettings()
-    navigationController!.popViewControllerAnimated(true)
+    //navigationController!.popViewControllerAnimated(true)
   }
   
   var searchController: UISearchController!
@@ -152,27 +174,6 @@ class LocationView:
     let span = MKCoordinateSpanMake(1, 1)
     let region = MKCoordinateRegion(center: coordinate!, span: span)
     mapView?.setRegion(region, animated: true)
-  }
-  
-  /* Presents simple alert.
-  * @param {String} title The title for alert.
-  * @param {String} message The message for alert.
-  */
-  func showAlert(title: String, message: String) {
-    var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-    
-    alert.addAction(UIAlertAction(title: "Ok", style: .Default) {
-      (action: UIAlertAction!) in
-      println("Handle Ok logic here")
-      })
-    
-    /*
-    alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
-    println("Handle Cancel Logic here")
-    }))
-    */
-    
-    presentViewController(alert, animated: true, completion: nil)
   }
   
   /* Searches after delay if query is not changed.

@@ -45,6 +45,26 @@ class GooglePlaceCoordinate {
     self.latitude = latitude
     self.longitude = longitude
   }
+  
+  func getTimezone(completionHandler: (timezone: GooglePlaceTimezone?, error: String?) -> ()) {
+    GooglePlacesAPI.shared.getTimezone(latitude, longitude: longitude, completionHandler: completionHandler)
+  }
+}
+
+class GooglePlaceTimezone {
+  var dstOffset: Double?
+  var rawOffset: Double?
+  
+  init(dstOffset: Double?, rawOffset: Double?) {
+    self.dstOffset = dstOffset
+    self.rawOffset = rawOffset
+  }
+  
+  var description: String {
+    get {
+      return rawOffset == nil ? "" : "UTC\(Int(rawOffset! / 60 / 60))"
+    }
+  }
 }
 
 /*  GooglePlaceCache is a singleton class that keeps cache for user requests.
@@ -70,8 +90,9 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
   let session = NSURLSession.sharedSession()
   
   let apiKey = ""
-  let placesApiURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
+  let autocompleteApiURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
   let detailsApiURL = "https://maps.googleapis.com/maps/api/place/details/json"
+  let timezoneApiURL = "https://maps.googleapis.com/maps/api/timezone/json"
   
   class var shared : GooglePlacesAPI {
     
@@ -100,7 +121,7 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
       return completionHandler(places: places, error: nil)
     }
     
-    let urlPath = placesApiURL +
+    let urlPath = autocompleteApiURL +
       "?input=" + query +
       "&types=" + "(cities)" +
       "&key="   + apiKey
@@ -137,6 +158,30 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
       let (coordinate, error) = self.parsePlaceCoordinateJSON(data)
       GooglePlacesCache.shared.coordinates[id] = coordinate
       completionHandler(coordinate: coordinate, error: error)
+    }
+    
+    task.resume()
+  }
+  
+  func getTimezone(latitude: Double?, longitude: Double?, completionHandler: (timezone: GooglePlaceTimezone?, error: String?) -> ()) {
+    if latitude == nil || longitude == nil { return completionHandler(timezone: nil, error: "Invalid coordinate.") }
+    
+    let location = "\(latitude!),\(longitude!)"
+    let timestamp = "\(Int(NSDate().timeIntervalSince1970))"
+    
+    let urlPath = timezoneApiURL +
+      "?location=" + location +
+      "&timestamp=" + timestamp +
+      "&key=" + apiKey
+    
+    let url = NSURL(string: urlPath.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+    
+    if url == nil { return completionHandler(timezone: nil, error: "url == nil") }
+    
+    let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
+      (data, response, error) in
+      let (timezone, error) = self.parsePlaceTimezoneJSON(data)
+      completionHandler(timezone: timezone, error: error)
     }
     
     task.resume()
@@ -199,5 +244,25 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     
     return (coordinate, nil)
   }
+  
+  func parsePlaceTimezoneJSON(data: NSData) -> (GooglePlaceTimezone?, String?) {
+    var timezone: GooglePlaceTimezone?
+    var err: NSError?
+    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary
+    
+    if err != nil { return (timezone, "Error: \(err)") }
+    
+    let status = jsonResult?["status"] as? String
+    
+    if status != "OK" { return (timezone, "Status: \(status).") }
+    
+    let dstOffset = jsonResult?["dstOffset"] as? Double
+    let rawOffset = jsonResult?["rawOffset"] as? Double
+    
+    timezone = GooglePlaceTimezone(dstOffset: dstOffset, rawOffset: rawOffset)
+    
+    return (timezone, nil)
+  }
+
   
 }
