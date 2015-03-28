@@ -85,7 +85,7 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
   override init() {
     super.init()
     
-    let apiKeyPath = NSBundle.mainBundle().pathForResource("GooglePlacesApi", ofType: "plist")
+    let apiKeyPath = NSBundle.mainBundle().pathForResource("GooglePlacesAPI", ofType: "plist")
     if apiKeyPath == nil { return }
     
     let apiKeyDictionary = NSDictionary(contentsOfFile: apiKeyPath!)

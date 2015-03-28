@@ -24,12 +24,17 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     addRefreshControll()
     
-    updateMoments()
+    
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    refreshControl.beginRefreshing()
+    updateMoments()
   }
   
   /* Presents simple alert.
@@ -65,6 +70,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
       dispatch_async(dispatch_get_main_queue()) {
         if error != nil { return self.showAlert("Failed to load moments!", message: error!) }
         
+        self.refreshControl.endRefreshing()
         self.tableView.reloadData()
       }
     }
@@ -73,16 +79,6 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
   func refreshTableView(sender: AnyObject) {
     // Do refreshing
     updateMoments()
-    
-    return
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-      let delay = 0.5
-      NSThread.sleepForTimeInterval(delay)
-      
-      dispatch_async(dispatch_get_main_queue()) {
-        self.refreshControl.endRefreshing()
-      }
-    })
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -1,5 +1,5 @@
 # ignore google api key
-DateOnTheMoon/GooglePlacesAPI/GooglePlacesApi.plist
+DateOnTheMoon/GooglePlacesAPI/GooglePlacesAPI.plist
 # ignore xcode generated files
 .DS_Store
 *.pbxuser
