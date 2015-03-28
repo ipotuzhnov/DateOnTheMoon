@@ -29,7 +29,7 @@ class GooglePlace {
   
   var description: String {
     get {
-      var description = locality == nil ? "" : locality!
+      var description = locality == nil ? "" : "\(locality!)"
       description += state == nil ? "" : ", \(state!)"
       description += country == nil ? "" : ", \(country!)"
       return description
@@ -62,7 +62,12 @@ class GooglePlaceTimezone {
   
   var description: String {
     get {
-      return rawOffset == nil ? "" : "UTC\(Int(rawOffset! / 60 / 60))"
+      var description = ""
+      if rawOffset == nil { return description }
+      
+      description += "UTC"
+      if rawOffset > 0 { description += "+" }
+      return description + "\(Int(rawOffset! / 60 / 60))"
     }
   }
 }
@@ -94,7 +99,7 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
   let detailsApiURL = "https://maps.googleapis.com/maps/api/place/details/json"
   let timezoneApiURL = "https://maps.googleapis.com/maps/api/timezone/json"
   
-  class var shared : GooglePlacesAPI {
+  class var shared: GooglePlacesAPI {
     
     struct Static {
       static let instance : GooglePlacesAPI = GooglePlacesAPI()
@@ -263,6 +268,5 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     
     return (timezone, nil)
   }
-
   
 }

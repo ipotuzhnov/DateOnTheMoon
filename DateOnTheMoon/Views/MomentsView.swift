@@ -23,8 +23,6 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     tableView.rowHeight = screenWidth / 4.0
     
     addRefreshControll()
-    
-    
   }
   
   override func didReceiveMemoryWarning() {

@@ -30,9 +30,22 @@ class LocationView:
         }
       }
       
-      if let description = timezone?.description {
+      if timezone?.dstOffset != nil {
         dispatch_async(dispatch_get_main_queue()) {
-          self.showAlert("Timezone", message: description)
+          //self.showAlert("Timezone", message: timezone!.description)
+          
+          if self.locationIdentifier == "chooseUserLocation" {
+            settings.userCoordinate = self.coordinate
+            settings.userTimezone = timezone
+          }
+          
+          if self.locationIdentifier == "choosePartnerLocation" {
+            settings.partnerCoordinate = self.coordinate
+            settings.partnerTimezone = timezone
+          }
+          
+          settings.saveSettings()
+          self.navigationController!.popViewControllerAnimated(true)
           return
         }
       } else {
@@ -42,17 +55,6 @@ class LocationView:
         }
       }
     }
-    
-    if locationIdentifier == "chooseUserLocation" {
-      settings.userCoordinate = coordinate
-    }
-    
-    if locationIdentifier == "choosePartnerLocation" {
-      settings.partnerCoordinate = coordinate
-    }
-    
-    settings.saveSettings()
-    //navigationController!.popViewControllerAnimated(true)
   }
   
   var searchController: UISearchController!

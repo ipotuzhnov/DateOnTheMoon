@@ -15,6 +15,7 @@
 		093832F01AAB9C1B00CDE4FF /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */; };
 		0943B79B1AB41FC500DACACF /* DetailMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943B79A1AB41FC500DACACF /* DetailMomentView.swift */; };
 		099CDBBC1AC6BA8E005538D6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CDBBB1AC6BA8E005538D6 /* UIViewControllerExtension.swift */; };
+		099CDBBE1AC71CF7005538D6 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CDBBD1AC71CF7005538D6 /* NSDateExtension.swift */; };
 		09A8B8E91A5AE4FE00AA833F /* MomentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8E71A5AE4FE00AA833F /* MomentsView.swift */; };
 		09A8B8EA1A5AE4FE00AA833F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8E81A5AE4FE00AA833F /* SettingsView.swift */; };
 		09A8B8EF1A5AE5CE00AA833F /* MomentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8ED1A5AE5CE00AA833F /* MomentsModel.swift */; };
@@ -54,6 +55,7 @@
 		093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
 		0943B79A1AB41FC500DACACF /* DetailMomentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMomentView.swift; sourceTree = "<group>"; };
 		099CDBBB1AC6BA8E005538D6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtension.swift; path = Extensions/UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		099CDBBD1AC71CF7005538D6 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = Extensions/NSDateExtension.swift; sourceTree = "<group>"; };
 		09A8B8E71A5AE4FE00AA833F /* MomentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsView.swift; sourceTree = "<group>"; };
 		09A8B8E81A5AE4FE00AA833F /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		09A8B8ED1A5AE5CE00AA833F /* MomentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsModel.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		09D5B50C1A6C18730052E062 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				099CDBBD1AC71CF7005538D6 /* NSDateExtension.swift */,
 				099CDBBB1AC6BA8E005538D6 /* UIViewControllerExtension.swift */,
 			);
 			name = Extensions;
@@ -334,6 +337,7 @@
 				09A8B8EF1A5AE5CE00AA833F /* MomentsModel.swift in Sources */,
 				099CDBBC1AC6BA8E005538D6 /* UIViewControllerExtension.swift in Sources */,
 				09A8B8E91A5AE4FE00AA833F /* MomentsView.swift in Sources */,
+				099CDBBE1AC71CF7005538D6 /* NSDateExtension.swift in Sources */,
 				09F9E6B21A5AC71700C9D888 /* AppDelegate.swift in Sources */,
 				09B3946E1AAE2F3700070049 /* WalkthroughTipView.swift in Sources */,
 			);

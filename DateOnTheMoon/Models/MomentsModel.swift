@@ -84,7 +84,6 @@ class Moment {
     
     let context = UIGraphicsGetCurrentContext()
     
-    
     arc.stroke()
     
     // get an image of the graphics context
@@ -336,7 +335,12 @@ class MomentsModel {
       if phase == nil { return (moments, "Error: json parse: phase") }
       if angle == nil { return (moments, "Error: json parse: angle") }
       
-      moments.append(Moment(start: NSDate(timeIntervalSince1970: start!), end: NSDate(timeIntervalSince1970: end!), angle: angle! * 100, phase: phase!))
+      let phaseShift = 0.75
+      let shiftedPhase = (phase! + phaseShift) % 1
+      
+      if (end! - start!) / 60 / 60 > 0.1 {
+        moments.append(Moment(start: NSDate(timeIntervalSince1970: start!), end: NSDate(timeIntervalSince1970: end!), angle: angle! * 100, phase: shiftedPhase))
+      }
     }
     
     return (moments, nil)
