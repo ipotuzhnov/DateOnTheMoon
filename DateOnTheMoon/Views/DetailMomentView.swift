@@ -9,6 +9,22 @@
 import UIKit
 
 class DetailMomentView: UIViewController {
+  @IBAction func shareMoment(sender: UIBarButtonItem) {
+    let shareView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 400))
+    addMomentDetails(shareView)
+    UIGraphicsBeginImageContext(shareView.frame.size)
+    let context = UIGraphicsGetCurrentContext()
+    shareView.layer.renderInContext(context)
+    let shareImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    let objectsToShare = [shareImage]
+    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+      
+    self.presentViewController(activityVC, animated: true, completion: nil)
+  }
+  
+  
   var moment: Moment?
   var uMoment: Moment?
   var pMoment: Moment?
@@ -20,15 +36,24 @@ class DetailMomentView: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
+    addMomentDetails(view, topBarOffset: topLayoutGuide.length)
+  }
+  
+  /* Add moment details to the given view.
+   * @param {UIView} view Given view.
+   * @param {CGFloat} topBarOffset Offset.
+   */
+  func addMomentDetails(view: UIView, topBarOffset: CGFloat = 0) {
     if moment == nil { return }
+  
+    let viewBounds = view.bounds
+    
+    println(viewBounds)
     
     let uTimeOffset = settings.userTimezone?.rawOffset
     let pTimeOffset = settings.partnerTimezone?.rawOffset
     
     if uTimeOffset == nil || pTimeOffset == nil { return }
-    
-    let viewBounds = self.view.bounds;
-    let topBarOffset = self.topLayoutGuide.length;
     
     let margin: CGFloat = 10
     
@@ -298,59 +323,6 @@ class DetailMomentView: UIViewController {
     pTimezoneLabel.textAlignment = .Center
     pTimezoneLabel.text = settings.partnerTimezone!.description
     view.addSubview(pTimezoneLabel)
-
-    
-    
-    
-    
-    
-    return
-    
-    // Vertical margins
-    
-    let vviewtFrame = CGRect(x: 0, y: topBarOffset, width: viewBounds.width, height: margin)
-    let vviewt = UIView(frame: vviewtFrame)
-    vviewt.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
-    view.addSubview(vviewt)
-    
-    let vviewbFrame = CGRect(x: 0, y: viewBounds.height - margin, width: viewBounds.width, height: margin)
-    let vviewb = UIView(frame: vviewbFrame)
-    vviewb.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
-    view.addSubview(vviewb)
-    
-    // Horizontal margins
-    
-    let hviewlFrame = CGRect(x: 0, y: topBarOffset, width: margin, height: viewBounds.height)
-    let hviewl = UIView(frame: hviewlFrame)
-    hviewl.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.5)
-    view.addSubview(hviewl)
-    
-    let hviewrFrame = CGRect(x: viewBounds.width - margin, y: topBarOffset, width: margin, height: viewBounds.height)
-    let hviewr = UIView(frame: hviewrFrame)
-    hviewr.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.5)
-    view.addSubview(hviewr)
-    
-    // Vertical margins for moon
-    
-    let vmoonbx: CGFloat = 0
-    let vmoonby: CGFloat = topBarOffset + margin + diameter
-    let vmoonbw: CGFloat = margin + diameter + margin
-    let vmoonbh: CGFloat = margin
-    let vmoonbFrame = CGRect(x: vmoonbx, y: vmoonby, width: vmoonbw, height: vmoonbh)
-    let vmoonb = UIView(frame: vmoonbFrame)
-    vmoonb.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
-    view.addSubview(vmoonb)
-    
-    // Horizontal margins for moon
-    
-    let hmoonbx: CGFloat = margin + diameter
-    let hmoonby: CGFloat = topBarOffset
-    let hmoonbw: CGFloat = margin
-    let hmoonbh: CGFloat = margin + diameter + margin
-    let hmoonrFrame = CGRect(x: hmoonbx, y: hmoonby, width: hmoonbw, height: hmoonbh)
-    let hmoonr = UIView(frame: hmoonrFrame)
-    hmoonr.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.5)
-    view.addSubview(hmoonr)
   }
   
   override func didReceiveMemoryWarning() {

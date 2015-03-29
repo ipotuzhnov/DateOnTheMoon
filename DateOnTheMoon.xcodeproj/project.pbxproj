@@ -10,17 +10,16 @@
 		09081A701AB4529C00A18B2B /* GooglePlacesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081A6F1AB4529C00A18B2B /* GooglePlacesAPI.swift */; };
 		09081A7C1AB45D4700A18B2B /* DateOnTheMoonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */; };
 		09196C331AB769DD00B5214D /* FullMoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09196C321AB769DD00B5214D /* FullMoon.png */; };
-		092B2D8A1AB425CF001CD14A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B2D891AB425CF001CD14A /* Social.framework */; };
 		092B2D8C1AB44EB8001CD14A /* GooglePlacesAPI.plist in Resources */ = {isa = PBXBuildFile; fileRef = 092B2D8B1AB44EB8001CD14A /* GooglePlacesAPI.plist */; };
 		093832F01AAB9C1B00CDE4FF /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */; };
 		0943B79B1AB41FC500DACACF /* DetailMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943B79A1AB41FC500DACACF /* DetailMomentView.swift */; };
 		099CDBBC1AC6BA8E005538D6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CDBBB1AC6BA8E005538D6 /* UIViewControllerExtension.swift */; };
 		099CDBBE1AC71CF7005538D6 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CDBBD1AC71CF7005538D6 /* NSDateExtension.swift */; };
+		099CDBBF1AC7373D005538D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AFD0731A98CBCE009A6699 /* MapKit.framework */; };
 		09A8B8E91A5AE4FE00AA833F /* MomentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8E71A5AE4FE00AA833F /* MomentsView.swift */; };
 		09A8B8EA1A5AE4FE00AA833F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8E81A5AE4FE00AA833F /* SettingsView.swift */; };
 		09A8B8EF1A5AE5CE00AA833F /* MomentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8ED1A5AE5CE00AA833F /* MomentsModel.swift */; };
 		09A8B8F01A5AE5CE00AA833F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B8EE1A5AE5CE00AA833F /* SettingsModel.swift */; };
-		09AFD0741A98CBCE009A6699 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AFD0731A98CBCE009A6699 /* MapKit.framework */; };
 		09B3945F1AACDBFE00070049 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B3945E1AACDBFE00070049 /* map_pin.png */; };
 		09B394621AAE2C0400070049 /* moon5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B394601AAE2C0400070049 /* moon5.jpg */; };
 		09B394631AAE2C0400070049 /* moon6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B394611AAE2C0400070049 /* moon6.jpg */; };
@@ -50,7 +49,6 @@
 		09081A7B1AB45D4700A18B2B /* DateOnTheMoonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnTheMoonTests.swift; sourceTree = "<group>"; };
 		09196C311AB61A2E00B5214D /* DateOnTheMoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateOnTheMoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09196C321AB769DD00B5214D /* FullMoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FullMoon.png; path = Images/FullMoon.png; sourceTree = "<group>"; };
-		092B2D891AB425CF001CD14A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		092B2D8B1AB44EB8001CD14A /* GooglePlacesAPI.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = GooglePlacesAPI.plist; path = GooglePlacesAPI/GooglePlacesAPI.plist; sourceTree = "<group>"; };
 		093832EF1AAB9C1B00CDE4FF /* PassThroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
 		0943B79A1AB41FC500DACACF /* DetailMomentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMomentView.swift; sourceTree = "<group>"; };
@@ -86,8 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				092B2D8A1AB425CF001CD14A /* Social.framework in Frameworks */,
-				09AFD0741A98CBCE009A6699 /* MapKit.framework in Frameworks */,
+				099CDBBF1AC7373D005538D6 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +162,6 @@
 		09F9E6A31A5AC71700C9D888 = {
 			isa = PBXGroup;
 			children = (
-				092B2D891AB425CF001CD14A /* Social.framework */,
 				09AFD0731A98CBCE009A6699 /* MapKit.framework */,
 				09F9E6AE1A5AC71700C9D888 /* DateOnTheMoon */,
 				09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */,
