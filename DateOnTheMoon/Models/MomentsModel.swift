@@ -12,6 +12,9 @@ import UIKit
 var momentsModel = MomentsModel()
 
 class Moment {
+  // @TODO (ilia) remove when finish testing
+  var testCase = 0
+  
   var start: NSDate
   var end: NSDate
   var angle: Double
@@ -324,6 +327,9 @@ class MomentsModel {
     
     //if error != nil { return (moments, "Status: \(status). Error: \(error)") }
     
+    // @TODO (ilia) remove when finish testing
+    var testCase = 0
+    
     for result in jsonResult as [NSDictionary] {
       let start = result["start"] as? Double
       let end = result["finish"] as? Double
@@ -340,6 +346,9 @@ class MomentsModel {
       
       if (end! - start!) / 60 / 60 > 0.1 {
         moments.append(Moment(start: NSDate(timeIntervalSince1970: start!), end: NSDate(timeIntervalSince1970: end!), angle: angle! * 100, phase: shiftedPhase))
+        
+        moments.last?.testCase = testCase % 4
+        testCase++
       }
     }
     

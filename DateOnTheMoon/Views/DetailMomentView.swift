@@ -104,8 +104,23 @@ class DetailMomentView: UIViewController {
     uMoment = Moment(start: moment!.start, end: moment!.end, angle: moment!.angle, phase: moment!.phase)
     pMoment = Moment(start: moment!.start, end: moment!.end, angle: moment!.angle, phase: moment!.phase)
     
-    pMoment!.start = NSDate(timeInterval: 2 * 60 * 60, sinceDate: pMoment!.start)
-    pMoment!.end = NSDate(timeInterval: 3 * 60 * 60, sinceDate: pMoment!.end)
+    switch moment!.testCase {
+    case 0:
+      pMoment!.start = NSDate(timeInterval: 2 * 60 * 60, sinceDate: pMoment!.start)
+      pMoment!.end = NSDate(timeInterval: 3 * 60 * 60, sinceDate: pMoment!.end)
+    case 1:
+      pMoment!.start = NSDate(timeInterval: 1 * 60 * 60, sinceDate: pMoment!.start)
+      uMoment!.end = NSDate(timeInterval: 3 * 60 * 60, sinceDate: pMoment!.end)
+    case 2:
+      uMoment!.start = NSDate(timeInterval: 2 * 60 * 60, sinceDate: pMoment!.start)
+      uMoment!.end = NSDate(timeInterval: 3 * 60 * 60, sinceDate: pMoment!.end)
+    case 3:
+      uMoment!.start = NSDate(timeInterval: 2 * 60 * 60, sinceDate: pMoment!.start)
+      pMoment!.end = NSDate(timeInterval: 3 * 60 * 60, sinceDate: pMoment!.end)
+    default:
+      println("Deafault")
+    }
+    
     
     if settings.userTimezone?.rawOffset == nil { return showAlert("Error", message: "userTimezone == nil") }
     if settings.partnerTimezone?.rawOffset == nil { return showAlert("Error", message: "partnerTimezone == nil") }
@@ -157,6 +172,45 @@ class DetailMomentView: UIViewController {
       lMomentFrameW = (ps - us) * pixelsInSecond
       bMomentFrameX = lMomentFrameX + lMomentFrameW
       bMomentFrameW = (ue - ps) * pixelsInSecond
+      rMomentFrameX = bMomentFrameX + bMomentFrameW
+      rMomentFrameW = (pe - ue) * pixelsInSecond
+    } else if us <= ps && ue >= pe {
+      let momentDuration = ue - us
+      pixelsInSecond = momentFrameWidth / momentDuration
+      uMomentFrameX += 0
+      uMomentFrameW = (ue - us) * pixelsInSecond
+      pMomentFrameX += (ps - us) * pixelsInSecond
+      pMomentFrameW = (pe - ps) * pixelsInSecond
+      lMomentFrameX = uMomentFrameX
+      lMomentFrameW = (ps - us) * pixelsInSecond
+      bMomentFrameX = lMomentFrameX + lMomentFrameW
+      bMomentFrameW = (pe - ps) * pixelsInSecond
+      rMomentFrameX = bMomentFrameX + bMomentFrameW
+      rMomentFrameW = (ue - pe) * pixelsInSecond
+    } else if us >= ps && ue >= pe {
+      let momentDuration = ue - ps
+      pixelsInSecond = momentFrameWidth / momentDuration
+      uMomentFrameX += (us - ps) * pixelsInSecond
+      uMomentFrameW = (ue - us) * pixelsInSecond
+      pMomentFrameX += 0
+      pMomentFrameW = (pe - ps) * pixelsInSecond
+      lMomentFrameX = pMomentFrameX
+      lMomentFrameW = (us - ps) * pixelsInSecond
+      bMomentFrameX = lMomentFrameX + lMomentFrameW
+      bMomentFrameW = (pe - us) * pixelsInSecond
+      rMomentFrameX = bMomentFrameX + bMomentFrameW
+      rMomentFrameW = (ue - pe) * pixelsInSecond
+    } else if us >= ps && ue <= pe {
+      let momentDuration = pe - ps
+      pixelsInSecond = momentFrameWidth / momentDuration
+      uMomentFrameX += (us - ps) * pixelsInSecond
+      uMomentFrameW = (ue - us) * pixelsInSecond
+      pMomentFrameX += 0
+      pMomentFrameW = (pe - ps) * pixelsInSecond
+      lMomentFrameX = pMomentFrameX
+      lMomentFrameW = (us - ps) * pixelsInSecond
+      bMomentFrameX = lMomentFrameX + lMomentFrameW
+      bMomentFrameW = (ue - us) * pixelsInSecond
       rMomentFrameX = bMomentFrameX + bMomentFrameW
       rMomentFrameW = (pe - ue) * pixelsInSecond
     }
