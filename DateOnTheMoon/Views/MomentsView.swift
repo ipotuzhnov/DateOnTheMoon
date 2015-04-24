@@ -21,6 +21,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     let screenRect = UIScreen.mainScreen().bounds
     let screenWidth = screenRect.size.width
     tableView.rowHeight = screenWidth / 4.0
+    tableView.layoutMargins = UIEdgeInsetsZero
     
     addRefreshControll()
   }
@@ -181,6 +182,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     cell.accessoryType = .DisclosureIndicator
     cell.selectionStyle = .None
+    cell.layoutMargins = UIEdgeInsetsZero
     
     return cell
   }

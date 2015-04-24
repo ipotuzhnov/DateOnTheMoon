@@ -112,6 +112,7 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     default:
       cell = UITableViewCell()
     }
+    
     return cell
   }
   
