@@ -38,7 +38,7 @@ class Moment {
     self.angle = angle
     self.phase = phase
     // Calculate moment duration
-    let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+    let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
     let diff = calendar?.components(.CalendarUnitMinute, fromDate: self.start, toDate: self.end, options: .MatchFirst)
     let inMinutes = diff?.minute
     let inHours = round(Double(inMinutes!) / 60.0 * 10.0) / 10.0
@@ -318,7 +318,7 @@ class MomentsModel {
     var moments = [Moment]()
     var err: NSError?
     // throwing an error on the line below (can't figure out where the error message is)
-    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSArray
+    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSArray
     
     if err != nil { return (moments, "Error: \(err)") }
     
@@ -330,7 +330,7 @@ class MomentsModel {
     // @TODO (ilia) remove when finish testing
     var testCase = 0
     
-    for result in jsonResult as [NSDictionary] {
+    for result in jsonResult as! [NSDictionary] {
       let start = result["start"] as? Double
       let end = result["finish"] as? Double
       let phase = result["phase"] as? Double

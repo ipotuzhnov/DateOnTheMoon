@@ -31,7 +31,7 @@ class WalkthroughTipView: UIViewController {
     }
     
     if index == 4 {
-      let button = UIButton.buttonWithType(.System) as UIButton
+      let button = UIButton.buttonWithType(.System) as! UIButton
       button.frame = CGRect(x: 20, y: titleViewHeight + 80, width: view.frame.width - 40, height: 50)
       button.setTitle("Let's start off!", forState: UIControlState.Normal)
       button.addTarget(self, action: "goToTheSettings:", forControlEvents: UIControlEvents.TouchUpInside)

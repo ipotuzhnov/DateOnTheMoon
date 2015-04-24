@@ -36,7 +36,7 @@ class WalkthroughView: UIPageViewController, UIPageViewControllerDataSource, UIP
     
     let startingViewController = viewControllerAtIndex(0)
     let viewControllers: NSArray = [startingViewController!]
-    setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+    setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
     
   }
   
@@ -55,14 +55,14 @@ class WalkthroughView: UIPageViewController, UIPageViewControllerDataSource, UIP
   /* UIPageViewControllerDataSource */
   
   func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-    let pageController = viewController as WalkthroughTipView
+    let pageController = viewController as! WalkthroughTipView
     if pageController.index <= 0 { return nil }
     
     return self.viewControllerAtIndex(pageController.index - 1)
   }
   
   func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-    let pageController = viewController as WalkthroughTipView
+    let pageController = viewController as! WalkthroughTipView
     if(pageController.index + 1 >= self.pageImages.count) { return nil }
     
     return viewControllerAtIndex(pageController.index + 1)

@@ -128,7 +128,7 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
   */
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    let locationView = segue.destinationViewController as LocationView // TODO @ilia remove
+    let locationView = segue.destinationViewController as! LocationView // TODO @ilia remove
     if let id = segue.identifier {
       locationView.locationIdentifier = id
       switch id {
@@ -163,7 +163,7 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
   
   func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
     println("did update locations")
-    let currentLocations = locations as [CLLocation]
+    let currentLocations = locations as! [CLLocation]
     if let location = locations.first as? CLLocation {
       //let currentCoordinate = settings.currentCoordinate
       //settings.currentCoordinate = location.coordinate

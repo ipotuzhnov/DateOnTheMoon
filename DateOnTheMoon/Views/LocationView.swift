@@ -274,7 +274,7 @@ class LocationView:
   func updateSearchResultsForSearchController(searchController: UISearchController) {
     let searchQuery = self.searchController.searchBar.text
     
-    if searchQuery.utf16Count == 0 {
+    if count(searchQuery) == 0 {
       objc_sync_enter(self)
       self.places = []
       objc_sync_exit(self)

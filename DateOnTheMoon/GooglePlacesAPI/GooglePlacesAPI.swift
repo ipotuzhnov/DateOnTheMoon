@@ -94,7 +94,7 @@ class GooglePlacesCache {
 class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
   let session = NSURLSession.sharedSession()
   
-  let apiKey = ""
+  var apiKey = ""
   let autocompleteApiURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
   let detailsApiURL = "https://maps.googleapis.com/maps/api/place/details/json"
   let timezoneApiURL = "https://maps.googleapis.com/maps/api/timezone/json"
@@ -196,7 +196,7 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     var places = [GooglePlace]()
     var err: NSError?
     // throwing an error on the line below (can't figure out where the error message is)
-    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
     
     if err != nil { return (places, "Error: \(err)") }
     
@@ -206,7 +206,7 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     if error != nil { return (places, "Status: \(status). Error: \(error)") }
     
     let predictions = jsonResult["predictions"] as? NSArray
-    for prediction in predictions as [NSDictionary] {
+    for prediction in predictions as! [NSDictionary] {
       let terms = prediction["terms"] as? NSArray
       
       if terms?.count == 0 { return (places, "terms.count == 0") }

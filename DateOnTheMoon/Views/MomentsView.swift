@@ -60,8 +60,8 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showMomentDetails" {
-      let destinationView = segue.destinationViewController as DetailMomentView
-      destinationView.moment = selectedMoment
+      let destinationView = segue.destinationViewController as? DetailMomentView
+      destinationView?.moment = selectedMoment
     }
   }
   

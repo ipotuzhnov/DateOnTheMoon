@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.hasSeenWalkthrough = true
         settings.saveSettings()
         
-        let navigationController = mainStoryboard.instantiateViewControllerWithIdentifier("NavigationController") as UINavigationController
+        let navigationController = mainStoryboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
         
         self.window?.rootViewController = navigationController
         navigationController.performSegueWithIdentifier("goToTheSettings", sender: self)
