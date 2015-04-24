@@ -20,7 +20,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     // Do any additional setup after loading the view.
     let screenRect = UIScreen.mainScreen().bounds
     let screenWidth = screenRect.size.width
-    tableView.rowHeight = screenWidth / 4.0
+    tableView.rowHeight = screenWidth / 3.0
     tableView.layoutMargins = UIEdgeInsetsZero
     
     addRefreshControll()
@@ -84,19 +84,31 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     let moment = momentsModel.moments[index]
     let cell = UITableViewCell(style: .Value1, reuseIdentifier: "momentCell")
     
-    let cellWidth = Double(tableView.contentSize.width)
-    let cellHeight = Double(tableView.rowHeight)
-    
-    let leftMargin = 20.0
+    let cellWidth = CGFloat(tableView.contentSize.width)
+    let cellHeight = CGFloat(tableView.rowHeight)
     
     // Default font sizes
-    let timeFontSize = momentsModel.timeFontSize
-    let dayFontSize  = momentsModel.dayFontSize
-    let infoFontSize = momentsModel.infoFontSize
+    let timeFontSize = CGFloat(momentsModel.timeFontSize)
+    let dayFontSize  = CGFloat(momentsModel.dayFontSize)
+    let infoFontSize = CGFloat(momentsModel.infoFontSize)
+    
+    let timeFont = UIFont.boldSystemFontOfSize(CGFloat(timeFontSize))
+    let dayFont = UIFont.systemFontOfSize(CGFloat(dayFontSize))
+    let infoFont = UIFont.systemFontOfSize(CGFloat(infoFontSize))
+    
+    let padding: CGFloat = 4
+    
+    let topMargin: CGFloat = 10
+    let timeFrameOffset: CGFloat = topMargin + padding + timeFontSize
+    let infoFrameOffset: CGFloat = topMargin + padding + infoFontSize
+    
+    let moonDiameter: CGFloat = timeFontSize + padding + dayFontSize
+    let moonMargin: CGFloat = 10
+    let leftMargin: CGFloat = moonMargin + moonDiameter + moonMargin
     
     // Draw moment elliptic arc
     let momentFrame = CGRect(x: 0, y: 0, width: cellWidth, height: cellHeight)
-    let offset = CGPoint(x: leftMargin + 10, y: infoFontSize * 2)
+    let offset = CGPoint(x: leftMargin, y: infoFrameOffset + padding + infoFontSize)
     let maxAngle = momentsModel.maxAngle
     let maxDuration = momentsModel.maxDuration
     
@@ -107,21 +119,16 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     momentView.image = arcImage
     cell.addSubview(momentView)
     
-    let timeFont = UIFont.boldSystemFontOfSize(CGFloat(timeFontSize))
-    let dayFont = UIFont.systemFontOfSize(CGFloat(dayFontSize))
-    let infoFont = UIFont.systemFontOfSize(CGFloat(infoFontSize))
-    
     // Add moon image
-    let moonFrame = CGRect(x: 2, y: 0, width: 18, height: 16)
-    let moonMargin: CGFloat = 2
-    let moonImage = moment.drawMoonIn(moonFrame, margin: moonMargin, color: .whiteColor())
-    let moonView = UIImageView(frame: CGRect(x: 2, y: 0, width: 18, height: 16))
+    let moonFrame = CGRect(x: 0, y: 0, width: moonDiameter, height: moonDiameter)
+    let moonImage = moment.drawMoonIn(moonFrame, margin: 0, color: .whiteColor())
+    let moonView = UIImageView(frame: CGRect(x: moonMargin, y: topMargin, width: moonDiameter, height: moonDiameter))
     moonView.image = moonImage
     moonView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI/10), 0, 0, 1)
     cell.addSubview(moonView)
     
     // Add starting time label
-    let startingTimeFrame = CGRect(x: leftMargin, y: 0.0, width: cellWidth/4, height: timeFontSize)
+    let startingTimeFrame = CGRect(x: leftMargin, y: topMargin, width: cellWidth/4, height: timeFontSize)
     let startingTimeLabel = UILabel(frame: startingTimeFrame)
     startingTimeLabel.font = timeFont
     startingTimeLabel.textAlignment = .Left
@@ -129,16 +136,16 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     cell.addSubview(startingTimeLabel)
     
     // Add starting day label
-    let startingDayFrame = CGRect(x: leftMargin, y: timeFontSize, width: cellWidth/4, height: dayFontSize)
+    let startingDayFrame = CGRect(x: leftMargin, y: timeFrameOffset, width: cellWidth/4, height: dayFontSize)
     let startingDayLabel = UILabel(frame: startingDayFrame)
     startingDayLabel.font = dayFont
     startingDayLabel.textAlignment = .Left
     startingDayLabel.text = momentsModel.getStartingDay(index)
     cell.addSubview(startingDayLabel)
-    let endingOffset = cellWidth - leftMargin - cellWidth/4
+    let endingOffset = cellWidth - leftMargin + moonMargin + padding - cellWidth/4
     
     // Add ending time label
-    let endingTimeFrame = CGRect(x: endingOffset, y: 0.0, width: cellWidth/4, height: timeFontSize)
+    let endingTimeFrame = CGRect(x: endingOffset, y: topMargin, width: cellWidth/4, height: timeFontSize)
     let endingTimeLabel = UILabel(frame: endingTimeFrame)
     endingTimeLabel.font = timeFont
     endingTimeLabel.textAlignment = .Right
@@ -147,7 +154,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     // Add ending day label if moon set in the other day
     if (momentsModel.getStartingDay(index) != momentsModel.getEndingDay(index)) {
-      let endingDayFrame = CGRect(x: endingOffset, y: timeFontSize, width: cellWidth/4, height: dayFontSize)
+      let endingDayFrame = CGRect(x: endingOffset, y: timeFrameOffset, width: cellWidth/4, height: dayFontSize)
       let endingDayLabel = UILabel(frame: endingDayFrame)
       endingDayLabel.font = dayFont
       endingDayLabel.textColor = .lightGrayColor()
@@ -158,7 +165,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     let infoOffset = cellWidth/2 - cellWidth/8
     
     // Add duration info label
-    let durationFrame = CGRect(x: infoOffset, y: 0.0, width: cellWidth/4, height: infoFontSize)
+    let durationFrame = CGRect(x: infoOffset, y: topMargin, width: cellWidth/4, height: infoFontSize)
     let durationLabel = UILabel(frame: durationFrame)
     durationLabel.font = infoFont
     durationLabel.textAlignment = .Center
@@ -173,7 +180,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     cell.addSubview(durationLabel)
     
     // Add angle info label
-    let angleFrame = CGRect(x: infoOffset, y: infoFontSize, width: cellWidth/4, height: infoFontSize)
+    let angleFrame = CGRect(x: infoOffset, y: infoFrameOffset, width: cellWidth/4, height: infoFontSize)
     let angleLabel = UILabel(frame: angleFrame)
     angleLabel.font = infoFont
     angleLabel.textAlignment = .Center
