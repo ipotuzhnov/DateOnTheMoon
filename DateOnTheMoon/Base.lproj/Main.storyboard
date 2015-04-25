@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Best Moments-->
+        <!--Moments-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="MomentsView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7Ck-XW-KSJ">
@@ -34,8 +34,10 @@
                             <constraint firstItem="7Ck-XW-KSJ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="wJQ-DB-01E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Best Moments" id="EUz-Uv-Gsj">
+                    <navigationItem key="navigationItem" title="Moments" id="EUz-Uv-Gsj">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="JWS-yz-zCV"/>
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="4Lh-JM-15i">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="kue-Yh-v8j" kind="show" identifier="goToTheSettings" id="v15-VK-XnF"/>
                             </connections>
@@ -50,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="1092" y="350"/>
         </scene>
-        <!--Location Settings-->
+        <!--Settings-->
         <scene sceneID="Ls2-iQ-i1T">
             <objects>
                 <viewController id="kue-Yh-v8j" customClass="SettingsView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,7 +61,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fgA-mi-S3J"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tde-xK-2CG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldD-d0-DzJ">
@@ -80,7 +82,9 @@
                             <constraint firstItem="ldD-d0-DzJ" firstAttribute="bottom" secondItem="fgA-mi-S3J" secondAttribute="top" id="NA8-Uz-rJo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Location Settings" id="n8o-JG-ftd"/>
+                    <navigationItem key="navigationItem" title="Settings" id="n8o-JG-ftd">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6B8-c2-Hev"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ldD-d0-DzJ" id="9Px-Jn-val"/>
                         <segue destination="a7y-TY-gne" kind="show" identifier="chooseUserLocation" id="O7i-A2-jah"/>
@@ -96,9 +100,13 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="MGd-Xm-y4W" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="seE-Df-bKN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="seE-Df-bKN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.018991405869999999" green="0.025253066019999999" blue="0.15438463760000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -110,7 +118,7 @@
             </objects>
             <point key="canvasLocation" x="241" y="1011"/>
         </scene>
-        <!--Moment Details-->
+        <!--Details-->
         <scene sceneID="766-Mr-SmG">
             <objects>
                 <viewController id="qNQ-uI-eKy" customClass="DetailMomentView" customModule="DateOnTheMoon" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,12 +127,14 @@
                         <viewControllerLayoutGuide type="bottom" id="kQk-8G-1pP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lVT-sX-HaP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Moment Details" id="6BB-mG-Cmb">
+                    <navigationItem key="navigationItem" title="Details" id="6BB-mG-Cmb">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="x00-6s-cqy"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="zaK-Qk-hjO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="shareMoment:" destination="qNQ-uI-eKy" id="u4n-ch-EOY"/>
                             </connections>
@@ -144,7 +154,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rR0-jy-T7w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aAR-n5-gI1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AI8-Pt-1mv" customClass="PassThroughView" customModule="DateOnTheMoon" customModuleProvider="target">
@@ -162,6 +172,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Choose Location" id="RrH-mj-jYe">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="k7O-Af-EqC"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="kte-b9-8E0">
                             <connections>
                                 <action selector="saveLocation" destination="a7y-TY-gne" id="Iyu-DP-YUr"/>
@@ -179,7 +190,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="v15-VK-XnF"/>
+        <segue reference="jMh-gb-62e"/>
         <segue reference="O7i-A2-jah"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

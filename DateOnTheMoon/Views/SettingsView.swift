@@ -65,15 +65,13 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
   /* UITableViewDataSource */
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 2
+    return 1
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 0:
       return "Locations"
-    case 1:
-      return "Add new setting"
     default:
       return ""
     }
@@ -98,12 +96,12 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
       switch indexPath.row {
       case 0:
         cell = UITableViewCell(style: .Value1, reuseIdentifier: "yourLocationCell")
-        cell.textLabel?.text = "Your location"
+        cell.textLabel?.text = "You"
         cell.accessoryType = .DisclosureIndicator
         cell.selectionStyle = .None
       case 1:
         cell = UITableViewCell(style: .Value1, reuseIdentifier: "partnerLocationCell")
-        cell.textLabel?.text = "Partner's location"
+        cell.textLabel?.text = "Partner"
         cell.accessoryType = .DisclosureIndicator
         cell.selectionStyle = .None
       default:
@@ -145,8 +143,6 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
         return
       }
     }
-    
-    let y = 2
   }
   
   /* CCLocationManagerDelegate */
