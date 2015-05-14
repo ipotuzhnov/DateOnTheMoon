@@ -29,9 +29,9 @@ class GooglePlace {
   
   var description: String {
     get {
-      var description = locality == nil ? "" : "\(locality!)"
-      description += state == nil ? "" : ", \(state!)"
-      description += country == nil ? "" : ", \(country!)"
+      var description = locality == nil ? "" : locality!
+      description += state == nil ? "" : (description == "" ? "" : ", ") + state!
+      description += country == nil ? "" : (description == "" ? "" : ", ") + country!
       return description
     }
   }
@@ -48,6 +48,10 @@ class GooglePlaceCoordinate {
   
   func getTimezone(completionHandler: (timezone: GooglePlaceTimezone?, error: String?) -> ()) {
     GooglePlacesAPI.shared.getTimezone(latitude, longitude: longitude, completionHandler: completionHandler)
+  }
+  
+  func getPlaceInfo(completionHandler: (place: GooglePlace?, error: String?) -> ()) {
+    GooglePlacesAPI.shared.getPlaceInfo(latitude, longitude: longitude, completionHandler: completionHandler)
   }
 }
 
@@ -98,6 +102,7 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
   let autocompleteApiURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
   let detailsApiURL = "https://maps.googleapis.com/maps/api/place/details/json"
   let timezoneApiURL = "https://maps.googleapis.com/maps/api/timezone/json"
+  let geocodeApiURL = "https://maps.googleapis.com/maps/api/geocode/json"
   
   class var shared: GooglePlacesAPI {
     
@@ -192,6 +197,29 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     task.resume()
   }
   
+  func getPlaceInfo(latitude: Double?, longitude: Double?, completionHandler: (place: GooglePlace?, error: String?) -> ()) {
+    if latitude == nil || longitude == nil { return completionHandler(place: nil, error: "Invalid coordinate.") }
+    
+    let latlng = "\(latitude!),\(longitude!)"
+    
+    let urlPath = geocodeApiURL +
+      "?latlng=" + latlng +
+      "&language=" + "en" +
+      "&key=" + apiKey
+    
+    let url = NSURL(string: urlPath.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+    
+    if url == nil { return completionHandler(place: nil, error: "url == nil") }
+    
+    let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
+      (data, response, error) in
+      let (place, error) = self.parsePlaceInfoJSON(data)
+      completionHandler(place: place, error: error)
+    }
+    
+    task.resume()
+  }
+  
   func parsePredictionsJSON(data: NSData) -> ([GooglePlace], String?) {
     var places = [GooglePlace]()
     var err: NSError?
@@ -208,7 +236,6 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     let predictions = jsonResult["predictions"] as? NSArray
     for prediction in predictions as! [NSDictionary] {
       let terms = prediction["terms"] as? NSArray
-      
       if terms?.count == 0 { return (places, "terms.count == 0") }
       
       let locality = (terms?[0] as? NSDictionary)?["value"] as? String
@@ -267,6 +294,56 @@ class GooglePlacesAPI: NSObject, NSURLConnectionDelegate {
     timezone = GooglePlaceTimezone(dstOffset: dstOffset, rawOffset: rawOffset)
     
     return (timezone, nil)
+  }
+  
+  func parsePlaceInfoJSON(data: NSData) -> (GooglePlace?, String?) {
+    var place: GooglePlace?
+    var err: NSError?
+    var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary
+    
+    if err != nil { return (place, "Error: \(err)") }
+    
+    let status = jsonResult?["status"] as? String
+    
+    if status != "OK" { return (place, "Status: \(status).") }
+    
+    let results = jsonResult?["results"] as? NSArray
+    
+    if results?.count == 0 { return (place, "parsePlaceInfoJSON: results.count == 0") }
+    
+    let result = results?[0] as? NSDictionary
+    let id = result?["place_id"] as? String
+    let address = result?["address_components"] as? NSArray
+
+    if address?.count == 0 { return (place, "parsePlaceInfoJSON: address.count == 0") }
+    
+    var locality: String?
+    var state: String?
+    var country: String?
+    
+    if let components = address as? [NSDictionary] {
+      for component in components {
+        if let types = component["types"] as? [String] {
+          for type in types {
+            switch (type) {
+            case "locality":
+              locality = component["long_name"] as? String
+            case "administrative_area_level_1":
+              state = component["short_name"] as? String != nil ? component["short_name"] as? String : component["long_name"] as? String
+            case "country":
+              country = component["long_name"] as? String
+            default:
+              ()
+            }
+          }
+        }
+      }
+    } else {
+      return (place, "parsePlaceInfoJSON: components == nil")
+    }
+    
+    place = GooglePlace(id: id, locality: locality, state: state, country: country)
+    return (place, nil)
   }
   
 }

@@ -21,16 +21,26 @@ class LocationView:
   @IBAction func saveLocation() {
     coordinate = mapView?.centerCoordinate
     
+    let group = dispatch_group_create()
+    
+    /* Get places' timezone */
+    dispatch_group_enter(group)
+    
     GooglePlacesAPI.shared.getTimezone(coordinate?.latitude, longitude: coordinate?.longitude) {
       (timezone, error) in
       if error != nil {
         dispatch_async(dispatch_get_main_queue()) {
           self.showAlert("GPA.getTimezone.ERROR", message: error!)
-          return
         }
+        
+        return dispatch_group_leave(group)
       }
       
-      if timezone?.dstOffset != nil {
+      if timezone?.dstOffset == nil {
+        dispatch_async(dispatch_get_main_queue()) {
+          self.showAlert("Timezone", message: "Can't get descriprion")
+        }
+      } else {
         dispatch_async(dispatch_get_main_queue()) {
           //self.showAlert("Timezone", message: timezone!.description)
           
@@ -43,18 +53,52 @@ class LocationView:
             settings.partnerCoordinate = self.coordinate
             settings.partnerTimezone = timezone
           }
-          
-          settings.saveSettings()
-          self.navigationController!.popViewControllerAnimated(true)
-          return
+        }
+      }
+      
+      return dispatch_group_leave(group)
+    }
+    
+    /* Get places' description */
+    dispatch_group_enter(group)
+    
+    GooglePlacesAPI.shared.getPlaceInfo(coordinate?.latitude, longitude: coordinate?.longitude) {
+      (place, error) in
+      if error != nil {
+        dispatch_async(dispatch_get_main_queue()) {
+          self.showAlert("GPA.getPlaceInfo", message: error!)
+        }
+        
+        return dispatch_group_leave(group)
+      }
+      
+      if place == nil {
+        dispatch_async(dispatch_get_main_queue()) {
+          self.showAlert("Place", message: "place is nil")
         }
       } else {
         dispatch_async(dispatch_get_main_queue()) {
-          self.showAlert("Timezone", message: "Can't get descriprion")
-          return
+          //self.showAlert("Place", message: place!.description)
+          
+          if self.locationIdentifier == "chooseUserLocation" {
+            settings.userPlaceDescription = place!.description
+          }
+          
+          if self.locationIdentifier == "choosePartnerLocation" {
+            settings.partnerPlaceDescription = place!.description
+          }
         }
       }
+      
+      return dispatch_group_leave(group)
     }
+    
+    
+    /* Save settings when all data is received */
+    dispatch_group_notify(group, dispatch_get_main_queue(), {
+      settings.saveSettings()
+      self.navigationController!.popViewControllerAnimated(true)
+    })
   }
   
   var searchController: UISearchController!
@@ -123,8 +167,8 @@ class LocationView:
   }
   
   /* Adds MKMapView to the view.
-  * @param {UIView} view The view to add map.
-  */
+   * @param {UIView} view The view to add map.
+   */
   func addMapView(view: UIView) {
     let x: CGFloat = 0
     let y: CGFloat = searchController.searchBar.frame.height
@@ -141,8 +185,8 @@ class LocationView:
   }
   
   /* Adds UIImage map_pin.png to the center of the view
-  * @param {UIView} view The view to add pin
-  */
+   * @param {UIView} view The view to add pin
+   */
   func addPin(view: UIView) {
     // 320 * 512
     let l = mapView!.center
@@ -162,9 +206,9 @@ class LocationView:
   }
   
   /* Checks if given coordinate is valid and changes currently visible region.
-  * @param {CLLocationCoordinate2D} coordinate The coordinate to be shown.
-  * Returns a {Bool} for function success.
-  */
+   * @param {CLLocationCoordinate2D} coordinate The coordinate to be shown.
+   * Returns a {Bool} for function success.
+   */
   func showCoordinate(coordinate: CLLocationCoordinate2D?) {
     if coordinate == nil { return }
     
@@ -179,9 +223,9 @@ class LocationView:
   }
   
   /* Searches after delay if query is not changed.
-  * @param {String} query Search query.
-  * @param {Double} delay Delay in seconds.
-  */
+   * @param {String} query Search query.
+   * @param {Double} delay Delay in seconds.
+   */
   func search(query: String, delay: Double) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
       NSThread.sleepForTimeInterval(delay)

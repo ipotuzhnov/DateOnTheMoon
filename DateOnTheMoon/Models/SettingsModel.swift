@@ -17,8 +17,10 @@ class SettingsModel {
   var currentCoordinate: CLLocationCoordinate2D?
   var userCoordinate: CLLocationCoordinate2D?
   var userTimezone: GooglePlaceTimezone?
+  var userPlaceDescription: String?
   var partnerCoordinate: CLLocationCoordinate2D?
   var partnerTimezone: GooglePlaceTimezone?
+  var partnerPlaceDescription: String?
   
   init() {
     //saveSettings()
@@ -42,6 +44,8 @@ class SettingsModel {
     let userRawOffset = NSUserDefaults.standardUserDefaults().objectForKey("UserRawOffset") as? Double
     userTimezone = GooglePlaceTimezone(dstOffset: userDstOffset, rawOffset: userRawOffset)
     
+    userPlaceDescription = NSUserDefaults.standardUserDefaults().objectForKey("UserPlaceDescription") as? String
+    
     /* Load partner's settings */
     
     let partnerLatitude = NSUserDefaults.standardUserDefaults().objectForKey("PartnerLatitude") as? Double
@@ -53,6 +57,8 @@ class SettingsModel {
     let partnerDstOffset = NSUserDefaults.standardUserDefaults().objectForKey("PartnerDstOffset") as? Double
     let partnerRawOffset = NSUserDefaults.standardUserDefaults().objectForKey("PartnerRawOffset") as? Double
     partnerTimezone = GooglePlaceTimezone(dstOffset: partnerDstOffset, rawOffset: partnerRawOffset)
+    
+    partnerPlaceDescription = NSUserDefaults.standardUserDefaults().objectForKey("PartnerPlaceDescription") as? String
   }
   
   func saveSettings() {
@@ -70,6 +76,10 @@ class SettingsModel {
       NSUserDefaults.standardUserDefaults().setObject(userTimezone!.rawOffset, forKey: "UserRawOffset")
     }
     
+    if userPlaceDescription != nil {
+      NSUserDefaults.standardUserDefaults().setObject(userPlaceDescription!, forKey: "UserPlaceDescription")
+    }
+    
     /* Save partner's settings */
     
     if partnerCoordinate != nil {
@@ -80,6 +90,10 @@ class SettingsModel {
     if partnerTimezone != nil {
       NSUserDefaults.standardUserDefaults().setObject(partnerTimezone!.dstOffset, forKey: "PartnerDstOffset")
       NSUserDefaults.standardUserDefaults().setObject(partnerTimezone!.rawOffset, forKey: "PartnerRawOffset")
+    }
+    
+    if partnerPlaceDescription != nil {
+      NSUserDefaults.standardUserDefaults().setObject(partnerPlaceDescription!, forKey: "PartnerPlaceDescription")
     }
     
     NSUserDefaults.standardUserDefaults().synchronize()

@@ -43,6 +43,12 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
   }
   
+  /* UIViewController */
+  
+  override func viewWillAppear(animated: Bool) {
+    tableView.reloadData()
+  }
+  
   /* UITableViewDelegate */
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -97,11 +103,17 @@ class SettingsView: UIViewController, UITableViewDelegate, UITableViewDataSource
       case 0:
         cell = UITableViewCell(style: .Value1, reuseIdentifier: "yourLocationCell")
         cell.textLabel?.text = "You"
+        if let locality = settings.userPlaceDescription {
+          cell.detailTextLabel?.text = count(locality) < 20 ? locality : locality.substringToIndex(advance(locality.startIndex, 20)) + "..."
+        }
         cell.accessoryType = .DisclosureIndicator
         cell.selectionStyle = .None
       case 1:
         cell = UITableViewCell(style: .Value1, reuseIdentifier: "partnerLocationCell")
         cell.textLabel?.text = "Partner"
+        if let locality = settings.partnerPlaceDescription {
+          cell.detailTextLabel?.text = count(locality) < 20 ? locality : locality.substringToIndex(advance(locality.startIndex, 20)) + "..."
+        }
         cell.accessoryType = .DisclosureIndicator
         cell.selectionStyle = .None
       default:
