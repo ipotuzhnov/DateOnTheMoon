@@ -1,0 +1,10 @@
+PODS:
+  - PullToRefresher (1.0)
+
+DEPENDENCIES:
+  - PullToRefresher (~> 1.0)
+
+SPEC CHECKSUMS:
+  PullToRefresher: e46b04d41d4991114f6e862d3741de0b9c4f0d46
+
+COCOAPODS: 0.37.2

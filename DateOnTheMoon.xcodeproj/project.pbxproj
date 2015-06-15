@@ -30,6 +30,7 @@
 		09F9E6B91A5AC71700C9D888 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F9E6B81A5AC71700C9D888 /* Images.xcassets */; };
 		09F9E6BC1A5AC71700C9D888 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F9E6BA1A5AC71700C9D888 /* LaunchScreen.xib */; };
 		09FD31AE1A9B412D0039ADC6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FD31AD1A9B412D0039ADC6 /* LocationView.swift */; };
+		95288219769651006B6EA5B7 /* Pods_DateOnTheMoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4D42C622E0BF44DA074CF9 /* Pods_DateOnTheMoon.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04E968552343E8F33275F3E8 /* Pods-DateOnTheMoon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateOnTheMoon.release.xcconfig"; path = "Pods/Target Support Files/Pods-DateOnTheMoon/Pods-DateOnTheMoon.release.xcconfig"; sourceTree = "<group>"; };
 		09081A6F1AB4529C00A18B2B /* GooglePlacesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePlacesAPI.swift; path = GooglePlacesAPI/GooglePlacesAPI.swift; sourceTree = "<group>"; };
 		09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateOnTheMoonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09081A7A1AB45D4700A18B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 		09F9E6B81A5AC71700C9D888 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		09F9E6BB1A5AC71700C9D888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		09FD31AD1A9B412D0039ADC6 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		16B7958D85367180F730E832 /* Pods-DateOnTheMoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateOnTheMoon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DateOnTheMoon/Pods-DateOnTheMoon.debug.xcconfig"; sourceTree = "<group>"; };
+		5C4D42C622E0BF44DA074CF9 /* Pods_DateOnTheMoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DateOnTheMoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				099CDBBF1AC7373D005538D6 /* MapKit.framework in Frameworks */,
+				95288219769651006B6EA5B7 /* Pods_DateOnTheMoon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +172,8 @@
 				09081A771AB45D4700A18B2B /* DateOnTheMoonTests.xctest */,
 				09081A781AB45D4700A18B2B /* DateOnTheMoonTests */,
 				09196C311AB61A2E00B5214D /* DateOnTheMoon.app */,
+				632CB4E3CF2A9C8677C97FEF /* Pods */,
+				743D87189FFE6940B3E1C8AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +211,23 @@
 			name = GooglePlacesAPI;
 			sourceTree = "<group>";
 		};
+		632CB4E3CF2A9C8677C97FEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16B7958D85367180F730E832 /* Pods-DateOnTheMoon.debug.xcconfig */,
+				04E968552343E8F33275F3E8 /* Pods-DateOnTheMoon.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		743D87189FFE6940B3E1C8AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C4D42C622E0BF44DA074CF9 /* Pods_DateOnTheMoon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09F9E6CB1A5AC71700C9D888 /* Build configuration list for PBXNativeTarget "DateOnTheMoon" */;
 			buildPhases = (
+				CC99D444795AB9ACB591A4B3 /* Check Pods Manifest.lock */,
 				09F9E6A81A5AC71700C9D888 /* Sources */,
 				09F9E6A91A5AC71700C9D888 /* Frameworks */,
 				09F9E6AA1A5AC71700C9D888 /* Resources */,
+				41780A8BA8B2419CCB950113 /* Embed Pods Frameworks */,
+				FD9B3CD5915F83A1BDC06790 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +336,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41780A8BA8B2419CCB950113 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DateOnTheMoon/Pods-DateOnTheMoon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC99D444795AB9ACB591A4B3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD9B3CD5915F83A1BDC06790 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DateOnTheMoon/Pods-DateOnTheMoon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		09081A731AB45D4700A18B2B /* Sources */ = {
@@ -485,6 +560,7 @@
 		};
 		09F9E6CC1A5AC71700C9D888 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16B7958D85367180F730E832 /* Pods-DateOnTheMoon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -497,6 +573,7 @@
 		};
 		09F9E6CD1A5AC71700C9D888 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04E968552343E8F33275F3E8 /* Pods-DateOnTheMoon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
