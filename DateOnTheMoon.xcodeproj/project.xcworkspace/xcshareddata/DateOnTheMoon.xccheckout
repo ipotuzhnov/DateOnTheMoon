@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4D9EDC72-3659-4444-848C-527CE01CDA41</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>DateOnTheMoon</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1583E9CC6D5BFA78CE7D05A08446E1A32EFBAA89</key>
 		<string>https://github.com/ipotuzhnov/DateOnTheMoon</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>DateOnTheMoon.xcodeproj/project.xcworkspace</string>
+	<string>DateOnTheMoon.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1583E9CC6D5BFA78CE7D05A08446E1A32EFBAA89</key>
