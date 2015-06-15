@@ -24,7 +24,6 @@ class SettingsModel {
   var partnerPlaceDescription: String?
   
   init() {
-    //saveSettings()
     loadSettings()
   }
   

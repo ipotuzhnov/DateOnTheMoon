@@ -13,8 +13,6 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
   @IBOutlet weak var tableView: UITableView!
   
   var refresher: PullToRefresh!
-  
-  var refreshControl: UIRefreshControl!
   var selectedMoment: Moment?
   
   override func viewDidLoad() {
@@ -25,8 +23,6 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     let screenWidth = screenRect.size.width
     tableView.rowHeight = screenWidth / 3.0
     tableView.layoutMargins = UIEdgeInsetsZero
-    
-    //addRefreshControll()
   }
   
   override func didReceiveMemoryWarning() {
@@ -35,15 +31,12 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
   }
   
   override func viewDidAppear(animated: Bool) {
-    //refreshControl.beginRefreshing()
     addRefresher()
     
     if settings.hasChangedLocation {
       settings.hasChangedLocation = false
       tableView.startRefreshing()
     }
-    
-    //updateMoments()
   }
   
   func addRefresher() {
@@ -54,28 +47,16 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
   }
   
-  func addRefreshControll() {
-    refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: "refreshTableView:", forControlEvents: UIControlEvents.ValueChanged)
-    tableView.addSubview(refreshControl)
-  }
-  
   func updateMoments() {
     momentsModel.getMoments {
       (error) in
       dispatch_async(dispatch_get_main_queue()) {
         if error != nil { return self.showAlert("Failed to load moments!", message: error!) }
         
-        //self.refreshControl.endRefreshing()
         self.tableView.endRefresing()
         self.tableView.reloadData()
       }
     }
-  }
-  
-  func refreshTableView(sender: AnyObject) {
-    // Do refreshing
-    updateMoments()
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
