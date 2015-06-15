@@ -19,6 +19,7 @@ class LocationView:
   @IBOutlet weak var searchView: UIView!
   
   @IBAction func saveLocation() {
+    settings.hasChangedLocation = true
     coordinate = mapView?.centerCoordinate
     
     let group = dispatch_group_create()

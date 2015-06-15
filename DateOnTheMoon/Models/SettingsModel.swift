@@ -12,6 +12,7 @@ let settings = SettingsModel()
 
 class SettingsModel {
   var hasSeenWalkthrough = false
+  var hasChangedLocation = true
   var locationManager = CLLocationManager()
   let geocoder = CLGeocoder()
   var currentCoordinate: CLLocationCoordinate2D?

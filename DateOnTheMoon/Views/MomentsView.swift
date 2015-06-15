@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import PullToRefresh
 
 class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource {
   @IBOutlet weak var tableView: UITableView!
+  
+  var refresher: PullToRefresh!
   
   var refreshControl: UIRefreshControl!
   var selectedMoment: Moment?
@@ -23,7 +26,7 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     tableView.rowHeight = screenWidth / 3.0
     tableView.layoutMargins = UIEdgeInsetsZero
     
-    addRefreshControll()
+    //addRefreshControll()
   }
   
   override func didReceiveMemoryWarning() {
@@ -32,8 +35,23 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
   }
   
   override func viewDidAppear(animated: Bool) {
-    refreshControl.beginRefreshing()
-    updateMoments()
+    //refreshControl.beginRefreshing()
+    addRefresher()
+    
+    if settings.hasChangedLocation {
+      settings.hasChangedLocation = false
+      tableView.startRefreshing()
+    }
+    
+    //updateMoments()
+  }
+  
+  func addRefresher() {
+    refresher = PullToRefresh()
+    
+    tableView.addPullToRefresh(refresher) {
+      self.updateMoments()
+    }
   }
   
   func addRefreshControll() {
@@ -48,7 +66,8 @@ class MomentsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
       dispatch_async(dispatch_get_main_queue()) {
         if error != nil { return self.showAlert("Failed to load moments!", message: error!) }
         
-        self.refreshControl.endRefreshing()
+        //self.refreshControl.endRefreshing()
+        self.tableView.endRefresing()
         self.tableView.reloadData()
       }
     }
